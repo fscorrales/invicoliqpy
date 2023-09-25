@@ -41,7 +41,10 @@ class MainWindow(QMainWindow):
 
         # USE CUSTOM TITLE BAR | USE AS "False" FOR MAC OR LINUX
         # ///////////////////////////////////////////////////////////////
-        Settings.ENABLE_CUSTOM_TITLE_BAR = False
+        if platform.system() == "Windows":
+            Settings.ENABLE_CUSTOM_TITLE_BAR = True
+        else:
+            Settings.ENABLE_CUSTOM_TITLE_BAR = False
 
         # APP NAME
         # ///////////////////////////////////////////////////////////////
