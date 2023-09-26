@@ -62,3 +62,5 @@ class SetupTables(MainWindow):
             table_view.resizeColumnsToContents()
             table_view.setSortingEnabled(True)
             table_view.sortByColumn(1, Qt.AscendingOrder)
+            #table_view.setGridStyle(Qt.SolidLine)
+            #table_view.setStyleSheet("QTableView { gridline-width: 2px; gridline-color: black; }")

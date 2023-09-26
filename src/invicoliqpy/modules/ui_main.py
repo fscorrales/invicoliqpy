@@ -17,11 +17,11 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplication, QCheckBox,
     QComboBox, QCommandLinkButton, QFrame, QGridLayout,
-    QHBoxLayout, QHeaderView, QLabel, QLineEdit,
-    QMainWindow, QPlainTextEdit, QPushButton, QRadioButton,
-    QScrollArea, QScrollBar, QSizePolicy, QSlider,
-    QStackedWidget, QTableView, QTableWidget, QTableWidgetItem,
-    QTextEdit, QVBoxLayout, QWidget)
+    QGroupBox, QHBoxLayout, QHeaderView, QLabel,
+    QLineEdit, QMainWindow, QPlainTextEdit, QPushButton,
+    QRadioButton, QScrollArea, QScrollBar, QSizePolicy,
+    QSlider, QStackedWidget, QTableView, QTableWidget,
+    QTableWidgetItem, QTextEdit, QVBoxLayout, QWidget)
 from . resources_rc import *
 
 class Ui_MainWindow(object):
@@ -1392,10 +1392,64 @@ class Ui_MainWindow(object):
         self.new_page.setObjectName(u"new_page")
         self.verticalLayout_20 = QVBoxLayout(self.new_page)
         self.verticalLayout_20.setObjectName(u"verticalLayout_20")
-        self.tableViewTest = QTableView(self.new_page)
+        self.groupBox = QGroupBox(self.new_page)
+        self.groupBox.setObjectName(u"groupBox")
+        sizePolicy4 = QSizePolicy(QSizePolicy.Ignored, QSizePolicy.Preferred)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.groupBox.sizePolicy().hasHeightForWidth())
+        self.groupBox.setSizePolicy(sizePolicy4)
+        self.groupBox.setFlat(False)
+        self.groupBox.setCheckable(False)
+        self.tableViewTest = QTableView(self.groupBox)
         self.tableViewTest.setObjectName(u"tableViewTest")
+        self.tableViewTest.setGeometry(QRect(10, 20, 481, 551))
+        sizePolicy.setHeightForWidth(self.tableViewTest.sizePolicy().hasHeightForWidth())
+        self.tableViewTest.setSizePolicy(sizePolicy)
+        self.verticalLayoutWidget = QWidget(self.groupBox)
+        self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
+        self.verticalLayoutWidget.setGeometry(QRect(500, 20, 161, 171))
+        self.verticalLayout_21 = QVBoxLayout(self.verticalLayoutWidget)
+        self.verticalLayout_21.setObjectName(u"verticalLayout_21")
+        self.verticalLayout_21.setContentsMargins(0, 0, 0, 0)
+        self.pushButton_3 = QPushButton(self.verticalLayoutWidget)
+        self.pushButton_3.setObjectName(u"pushButton_3")
+        self.pushButton_3.setMinimumSize(QSize(150, 30))
+        self.pushButton_3.setFont(font)
+        self.pushButton_3.setCursor(QCursor(Qt.PointingHandCursor))
+        self.pushButton_3.setStyleSheet(u"background-color: rgb(52, 59, 72);")
+        icon6 = QIcon()
+        icon6.addFile(u":/icons/images/icons/cil-user-follow.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_3.setIcon(icon6)
 
-        self.verticalLayout_20.addWidget(self.tableViewTest)
+        self.verticalLayout_21.addWidget(self.pushButton_3)
+
+        self.pushButton_2 = QPushButton(self.verticalLayoutWidget)
+        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.pushButton_2.setMinimumSize(QSize(150, 30))
+        self.pushButton_2.setFont(font)
+        self.pushButton_2.setCursor(QCursor(Qt.PointingHandCursor))
+        self.pushButton_2.setStyleSheet(u"background-color: rgb(52, 59, 72);")
+        icon7 = QIcon()
+        icon7.addFile(u":/icons/images/icons/cil-pencil.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_2.setIcon(icon7)
+
+        self.verticalLayout_21.addWidget(self.pushButton_2)
+
+        self.pushButton_4 = QPushButton(self.verticalLayoutWidget)
+        self.pushButton_4.setObjectName(u"pushButton_4")
+        self.pushButton_4.setMinimumSize(QSize(150, 30))
+        self.pushButton_4.setFont(font)
+        self.pushButton_4.setCursor(QCursor(Qt.PointingHandCursor))
+        self.pushButton_4.setStyleSheet(u"background-color: rgb(52, 59, 72);")
+        icon8 = QIcon()
+        icon8.addFile(u":/icons/images/icons/cil-x-circle.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.pushButton_4.setIcon(icon8)
+
+        self.verticalLayout_21.addWidget(self.pushButton_4)
+
+
+        self.verticalLayout_20.addWidget(self.groupBox)
 
         self.stackedWidget.addWidget(self.new_page)
 
@@ -1661,6 +1715,10 @@ class Ui_MainWindow(object):
         ___qtablewidgetitem23.setText(QCoreApplication.translate("MainWindow", u"Line", None));
         self.tableWidget.setSortingEnabled(__sortingEnabled)
 
+        self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"Factureros", None))
+        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Agregar", None))
+        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Editar", None))
+        self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"Eliminar", None))
         self.btn_message.setText(QCoreApplication.translate("MainWindow", u"Message", None))
         self.btn_print.setText(QCoreApplication.translate("MainWindow", u"Print", None))
         self.btn_logout.setText(QCoreApplication.translate("MainWindow", u"Logout", None))
