@@ -119,6 +119,18 @@ class MainWindow(QMainWindow):
         widgets.stackedWidget.setCurrentWidget(widgets.home)
         widgets.btn_home.setStyleSheet(UIFunctions.selectMenu(widgets.btn_home.styleSheet()))
 
+    # def obtener_cadena_importaciones():
+    #     cadena_importaciones = []
+    #     for nombre_modulo, modulo in sys.modules.items():
+    #         if hasattr(modulo, '__file__'):
+    #             ruta_modulo = modulo.__file__
+    #             cadena_importaciones.append((nombre_modulo, ruta_modulo))
+                
+    #     return cadena_importaciones
+
+    # cadena_importaciones = obtener_cadena_importaciones()
+    # for nombre_modulo, ruta_modulo in cadena_importaciones:
+    #     print(nombre_modulo, '->', ruta_modulo)
 
     # BUTTONS CLICK
     # Post here your functions for clicked buttons
