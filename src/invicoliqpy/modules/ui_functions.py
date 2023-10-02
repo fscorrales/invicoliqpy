@@ -142,7 +142,7 @@ class UIFunctions(MainWindow):
                 widthExtended = standard
                 # RESET BTN
                 self.ui.settingsTopBtn.setStyleSheet(style.replace(color, ''))
-
+            
             UIFunctions.start_box_animation(self, widthLeftBox, width, "right")
 
     def start_box_animation(self, left_box_width, right_box_width, direction):
@@ -156,7 +156,7 @@ class UIFunctions(MainWindow):
             left_width = 0
         # Check values
         if right_box_width == 0 and direction == "right":
-            right_width = 240
+            right_width = 360
         else:
             right_width = 0       
 

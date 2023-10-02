@@ -20,8 +20,9 @@ from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplicat
     QGroupBox, QHBoxLayout, QHeaderView, QLabel,
     QLineEdit, QMainWindow, QPlainTextEdit, QPushButton,
     QRadioButton, QScrollArea, QScrollBar, QSizePolicy,
-    QSlider, QStackedWidget, QTableView, QTableWidget,
-    QTableWidgetItem, QTextEdit, QVBoxLayout, QWidget)
+    QSlider, QStackedWidget, QTabWidget, QTableView,
+    QTableWidget, QTableWidgetItem, QTextEdit, QVBoxLayout,
+    QWidget)
 from . resources_rc import *
 
 class Ui_MainWindow(object):
@@ -1403,15 +1404,15 @@ class Ui_MainWindow(object):
         self.groupBox.setCheckable(False)
         self.tableViewTest = QTableView(self.groupBox)
         self.tableViewTest.setObjectName(u"tableViewTest")
-        self.tableViewTest.setGeometry(QRect(10, 20, 481, 551))
+        self.tableViewTest.setGeometry(QRect(10, 70, 481, 471))
         sizePolicy.setHeightForWidth(self.tableViewTest.sizePolicy().hasHeightForWidth())
         self.tableViewTest.setSizePolicy(sizePolicy)
         self.verticalLayoutWidget = QWidget(self.groupBox)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(500, 20, 161, 171))
-        self.verticalLayout_21 = QVBoxLayout(self.verticalLayoutWidget)
-        self.verticalLayout_21.setObjectName(u"verticalLayout_21")
-        self.verticalLayout_21.setContentsMargins(0, 0, 0, 0)
+        self.verticalLayoutWidget.setGeometry(QRect(10, 30, 481, 32))
+        self.horizontalLayout_6 = QHBoxLayout(self.verticalLayoutWidget)
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.pushButton_3 = QPushButton(self.verticalLayoutWidget)
         self.pushButton_3.setObjectName(u"pushButton_3")
         self.pushButton_3.setMinimumSize(QSize(150, 30))
@@ -1422,7 +1423,7 @@ class Ui_MainWindow(object):
         icon6.addFile(u":/icons/images/icons/cil-user-follow.png", QSize(), QIcon.Normal, QIcon.Off)
         self.pushButton_3.setIcon(icon6)
 
-        self.verticalLayout_21.addWidget(self.pushButton_3)
+        self.horizontalLayout_6.addWidget(self.pushButton_3)
 
         self.pushButton_2 = QPushButton(self.verticalLayoutWidget)
         self.pushButton_2.setObjectName(u"pushButton_2")
@@ -1434,7 +1435,7 @@ class Ui_MainWindow(object):
         icon7.addFile(u":/icons/images/icons/cil-pencil.png", QSize(), QIcon.Normal, QIcon.Off)
         self.pushButton_2.setIcon(icon7)
 
-        self.verticalLayout_21.addWidget(self.pushButton_2)
+        self.horizontalLayout_6.addWidget(self.pushButton_2)
 
         self.pushButton_4 = QPushButton(self.verticalLayoutWidget)
         self.pushButton_4.setObjectName(u"pushButton_4")
@@ -1446,7 +1447,7 @@ class Ui_MainWindow(object):
         icon8.addFile(u":/icons/images/icons/cil-x-circle.png", QSize(), QIcon.Normal, QIcon.Off)
         self.pushButton_4.setIcon(icon8)
 
-        self.verticalLayout_21.addWidget(self.pushButton_4)
+        self.horizontalLayout_6.addWidget(self.pushButton_4)
 
 
         self.verticalLayout_20.addWidget(self.groupBox)
@@ -1484,8 +1485,13 @@ class Ui_MainWindow(object):
         self.verticalLayout_13.setSpacing(0)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.verticalLayout_13.setContentsMargins(0, 0, 0, 0)
-        self.topMenus = QFrame(self.contentSettings)
+        self.tabWidget = QTabWidget(self.contentSettings)
+        self.tabWidget.setObjectName(u"tabWidget")
+        self.tab = QWidget()
+        self.tab.setObjectName(u"tab")
+        self.topMenus = QFrame(self.tab)
         self.topMenus.setObjectName(u"topMenus")
+        self.topMenus.setGeometry(QRect(0, 10, 350, 135))
         self.topMenus.setFrameShape(QFrame.NoFrame)
         self.topMenus.setFrameShadow(QFrame.Raised)
         self.verticalLayout_14 = QVBoxLayout(self.topMenus)
@@ -1528,8 +1534,12 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_14.addWidget(self.btn_logout)
 
+        self.tabWidget.addTab(self.tab, "")
+        self.tab_2 = QWidget()
+        self.tab_2.setObjectName(u"tab_2")
+        self.tabWidget.addTab(self.tab_2, "")
 
-        self.verticalLayout_13.addWidget(self.topMenus, 0, Qt.AlignTop)
+        self.verticalLayout_13.addWidget(self.tabWidget)
 
 
         self.verticalLayout_7.addWidget(self.contentSettings)
@@ -1594,6 +1604,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.stackedWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1722,6 +1733,8 @@ class Ui_MainWindow(object):
         self.btn_message.setText(QCoreApplication.translate("MainWindow", u"Message", None))
         self.btn_print.setText(QCoreApplication.translate("MainWindow", u"Print", None))
         self.btn_logout.setText(QCoreApplication.translate("MainWindow", u"Logout", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Tab 1", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Tab 2", None))
         self.creditsLabel.setText(QCoreApplication.translate("MainWindow", u"By: Wanderson M. Pimenta", None))
         self.version.setText(QCoreApplication.translate("MainWindow", u"v1.0.3", None))
     # retranslateUi
