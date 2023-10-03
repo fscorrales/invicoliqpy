@@ -2882,7 +2882,7 @@ background-repeat: no-repeat;</string>
                  <widget class="QFrame" name="extraRightBox">
                   <property name="minimumSize">
                    <size>
-                    <width>0</width>
+                    <width>340</width>
                     <height>0</height>
                    </size>
                   </property>
@@ -2956,12 +2956,16 @@ background-repeat: no-repeat;</string>
                       </property>
                       <item>
                        <widget class="QTabWidget" name="tabWidget">
-                        <property name="currentIndex">
-                         <number>0</number>
+                        <property name="styleSheet">
+                         <string notr="true"> background-color: rgb(44, 49, 58);
+border: none;</string>
+                        </property>
+                        <property name="tabBarAutoHide">
+                         <bool>false</bool>
                         </property>
                         <widget class="QWidget" name="tab">
                          <attribute name="title">
-                          <string>Tab 1</string>
+                          <string>Prueba</string>
                          </attribute>
                          <widget class="QFrame" name="topMenus">
                           <property name="geometry">
