@@ -16,8 +16,11 @@
 
 # MAIN FILE
 # ///////////////////////////////////////////////////////////////
-from main import *
-
+# from main import MainWindow
+from modules.app_settings import Settings
+from PySide6.QtSql import QSqlTableModel
+from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QAbstractItemView
 
 # WITH ACCESS TO MAIN WINDOW WIDGETS
 # ///////////////////////////////////////////////////////////////

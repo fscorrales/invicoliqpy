@@ -14,14 +14,23 @@
 #
 # ///////////////////////////////////////////////////////////////
 
-import sys
 import os
 import platform
+import sys
+
+from modules.app_settings import Settings
+from modules.database_manager import DatabaseManager
+from modules.ui_main import Ui_MainWindow
+from modules.utils import HanglingPath
+from PySide6.QtCore import Qt
+from PySide6.QtGui import QIcon
+from PySide6.QtWidgets import QApplication, QHeaderView, QMainWindow, QAbstractItemView
+from PySide6.QtSql import QSqlTableModel
 
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
-from modules import *
-from widgets import *
+# from modules import *
+# from widgets import *
 os.environ["QT_FONT_DPI"] = "96" # FIX Problem for High DPI and Scale above 100%
 
 # SET AS GLOBAL WIDGETS
@@ -29,6 +38,9 @@ os.environ["QT_FONT_DPI"] = "96" # FIX Problem for High DPI and Scale above 100%
 widgets = None
 
 class MainWindow(QMainWindow):
+    # from modules.app_functions import AppFunctions, SetupTables
+    # from modules.ui_functions import UIFunctions
+
     def __init__(self):
         QMainWindow.__init__(self)
 
@@ -102,7 +114,7 @@ class MainWindow(QMainWindow):
             UIFunctions.theme(self, themeFile, True)
 
             # SET HACKS
-            AppFunctions.setThemeHack(self)
+            self.setThemeHack()
 
         # CONNECT TO DATABASE
         # ///////////////////////////////////////////////////////////////
@@ -111,9 +123,7 @@ class MainWindow(QMainWindow):
         self.db = DatabaseManager(db_path)
 
         # SETUP TABLES
-        SetupTables.setup_table_factureros(self)
-
-
+        self.setup_table_factureros(self)
 
         # SET HOME PAGE AND SELECT MENU
         # ///////////////////////////////////////////////////////////////
@@ -183,6 +193,45 @@ class MainWindow(QMainWindow):
             print('Mouse click: LEFT CLICK')
         if event.buttons() == Qt.RightButton:
             print('Mouse click: RIGHT CLICK')
+
+    def setThemeHack(self):
+        Settings.BTN_LEFT_BOX_COLOR = "background-color: #495474;"
+        Settings.BTN_RIGHT_BOX_COLOR = "background-color: #495474;"
+        Settings.MENU_SELECTED_STYLESHEET = MENU_SELECTED_STYLESHEET = """
+        border-left: 22px solid qlineargradient(spread:pad, x1:0.034, y1:0, x2:0.216, y2:0, stop:0.499 rgba(255, 121, 198, 255), stop:0.5 rgba(85, 170, 255, 0));
+        background-color: #566388;
+        """
+
+        # SET MANUAL STYLES
+        self.ui.lineEdit.setStyleSheet("background-color: #6272a4;")
+        self.ui.pushButton.setStyleSheet("background-color: #6272a4;")
+        self.ui.plainTextEdit.setStyleSheet("background-color: #6272a4;")
+        self.ui.tableWidget.setStyleSheet("QScrollBar:vertical { background: #6272a4; } QScrollBar:horizontal { background: #6272a4; }")
+        self.ui.scrollArea.setStyleSheet("QScrollBar:vertical { background: #6272a4; } QScrollBar:horizontal { background: #6272a4; }")
+        self.ui.comboBox.setStyleSheet("background-color: #6272a4;")
+        self.ui.horizontalScrollBar.setStyleSheet("background-color: #6272a4;")
+        self.ui.verticalScrollBar.setStyleSheet("background-color: #6272a4;")
+        self.ui.commandLinkButton.setStyleSheet("color: #ff79c6;")
+
+    def setup_table_factureros(self):
+        if self.db.open_connection():
+            table_model = QSqlTableModel(self)
+            table_model.setTable('factureros')
+            table_model.select()
+
+            table_view = self.ui.tableViewTest
+            table_view.setModel(table_model)
+
+            # Opcional: configurar el comportamiento de la vista
+            #Set up table properties
+            table_view.setEditTriggers(QAbstractItemView.NoEditTriggers)
+            table_view.verticalHeader().setVisible(False)
+            table_view.hideColumn(0)
+            table_view.resizeColumnsToContents()
+            table_view.setSortingEnabled(True)
+            table_view.sortByColumn(1, Qt.AscendingOrder)
+            #table_view.setGridStyle(Qt.SolidLine)
+            #table_view.setStyleSheet("QTableView { gridline-width: 2px; gridline-color: black; }")
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

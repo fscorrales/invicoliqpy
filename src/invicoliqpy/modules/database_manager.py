@@ -1,4 +1,4 @@
-from main import *
+from PySide6.QtSql import QSqlDatabase, QSqlQuery
 
 class DatabaseManager:
     def __init__(self, database_name):
