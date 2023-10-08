@@ -23,7 +23,7 @@ from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplicat
     QSlider, QStackedWidget, QTabWidget, QTableView,
     QTableWidget, QTableWidgetItem, QTextEdit, QVBoxLayout,
     QWidget)
-from modules.resources_rc import *
+from invicoliqpy.views.resources_rc import *
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):

@@ -3,7 +3,7 @@ import inspect
 
 class HanglingPath():
     # --------------------------------------------------
-    def get_modules_path(self):
+    def get_views_path(self):
         dir_path = os.path.dirname(
             os.path.abspath(
                 inspect.getfile(
@@ -12,7 +12,7 @@ class HanglingPath():
 
     # --------------------------------------------------
     def get_invicoliqpy_path(self):
-        dir_path = self.get_modules_path()
+        dir_path = self.get_views_path()
         dir_path = os.path.dirname(dir_path)
         return dir_path
 

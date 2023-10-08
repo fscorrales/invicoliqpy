@@ -17,14 +17,17 @@
 # MAIN FILE
 # ///////////////////////////////////////////////////////////////
 # from main import MainWindow
-from modules.app_settings import Settings
+from invicoliqpy.views.app_settings import Settings
 from PySide6.QtSql import QSqlTableModel
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import QAbstractItemView
 
 # WITH ACCESS TO MAIN WINDOW WIDGETS
 # ///////////////////////////////////////////////////////////////
-class AppFunctions(MainWindow):
+class AppFunctions():
+    def __init__(self, main_window):
+        self.main_window = main_window
+
     #--------------------------------------------
     def setThemeHack(self):
         Settings.BTN_LEFT_BOX_COLOR = "background-color: #495474;"
@@ -35,26 +38,29 @@ class AppFunctions(MainWindow):
         """
 
         # SET MANUAL STYLES
-        self.ui.lineEdit.setStyleSheet("background-color: #6272a4;")
-        self.ui.pushButton.setStyleSheet("background-color: #6272a4;")
-        self.ui.plainTextEdit.setStyleSheet("background-color: #6272a4;")
-        self.ui.tableWidget.setStyleSheet("QScrollBar:vertical { background: #6272a4; } QScrollBar:horizontal { background: #6272a4; }")
-        self.ui.scrollArea.setStyleSheet("QScrollBar:vertical { background: #6272a4; } QScrollBar:horizontal { background: #6272a4; }")
-        self.ui.comboBox.setStyleSheet("background-color: #6272a4;")
-        self.ui.horizontalScrollBar.setStyleSheet("background-color: #6272a4;")
-        self.ui.verticalScrollBar.setStyleSheet("background-color: #6272a4;")
-        self.ui.commandLinkButton.setStyleSheet("color: #ff79c6;")
+        self.main_window.ui.lineEdit.setStyleSheet("background-color: #6272a4;")
+        self.main_window.ui.pushButton.setStyleSheet("background-color: #6272a4;")
+        self.main_window.ui.plainTextEdit.setStyleSheet("background-color: #6272a4;")
+        self.main_window.ui.tableWidget.setStyleSheet("QScrollBar:vertical { background: #6272a4; } QScrollBar:horizontal { background: #6272a4; }")
+        self.main_window.ui.scrollArea.setStyleSheet("QScrollBar:vertical { background: #6272a4; } QScrollBar:horizontal { background: #6272a4; }")
+        self.main_window.ui.comboBox.setStyleSheet("background-color: #6272a4;")
+        self.main_window.ui.horizontalScrollBar.setStyleSheet("background-color: #6272a4;")
+        self.main_window.ui.horizontalScrollBar.setStyleSheet("background-color: #6272a4;")
+        self.main_window.ui.verticalScrollBar.setStyleSheet("background-color: #6272a4;")
+        self.main_window.ui.commandLinkButton.setStyleSheet("color: #ff79c6;")
 
 
-class SetupTables(MainWindow):
+class SetupTables:
+    def __init__(self, main_window):
+        self.main_window = main_window
     #--------------------------------------------
     def setup_table_factureros(self):
-        if self.db.open_connection():
-            table_model = QSqlTableModel(self)
+        if self.main_window.db.open_connection():
+            table_model = QSqlTableModel()
             table_model.setTable('factureros')
             table_model.select()
 
-            table_view = self.ui.tableViewTest
+            table_view = self.main_window.ui.tableViewTest
             table_view.setModel(table_model)
 
             # Opcional: configurar el comportamiento de la vista
