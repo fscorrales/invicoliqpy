@@ -22,7 +22,8 @@ from PySide6.QtCore import Qt
 from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QApplication, QHeaderView, QMainWindow
 
-from invicoliqpy.views.app_functions import AppFunctions, SetupTables
+from invicoliqpy.views.app_functions import AppFunctions
+from invicoliqpy.views.factureros_functions import FacturerosFunctions
 from invicoliqpy.views.app_settings import Settings
 from invicoliqpy.models.database_manager import DatabaseManager
 from invicoliqpy.views.ui_functions import UIFunctions
@@ -68,7 +69,7 @@ class MainWindow(QMainWindow):
         # QTableWidget PARAMETERS
         # ///////////////////////////////////////////////////////////////
         widgets.tableWidget.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
-        widgets.tableViewTest.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
+        # widgets.tableViewTest.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
 
         # BUTTONS CLICK
         # ///////////////////////////////////////////////////////////////
@@ -86,9 +87,13 @@ class MainWindow(QMainWindow):
         self.show()
         self.setCustomTheme()
 
-        # SETUP TABLES
+        # CONNECT TO DATABASE
+        # ///////////////////////////////////////////////////////////////
         self.connectToDatabase()
-        self.setupTableFactureros()
+
+        # SETUP PAGES
+        # ///////////////////////////////////////////////////////////////
+        self.facturerosFunctions()
 
         # SET HOME PAGE AND SELECT MENU
         # ///////////////////////////////////////////////////////////////
@@ -102,6 +107,9 @@ class MainWindow(QMainWindow):
         widgets.extraCloseColumnBtn.clicked.connect(lambda: self.ui_functions.toggleLeftBox(True))
         #RIGHT BOX
         widgets.settingsTopBtn.clicked.connect(lambda: self.ui_functions.toggleRightBox(True))
+
+        # Lo oculto momentamente hasta saber qué hacer...
+        widgets.rightTabBox.setTabVisible(0, False)
 
     # BUTTONS CLICK
     # Post here your functions for clicked buttons
@@ -161,9 +169,6 @@ class MainWindow(QMainWindow):
         db_path = os.path.join(db_path, "slave_test.sqlite")
         self.db = DatabaseManager(db_path)
 
-    def setupTableFactureros(self):
-        SetupTables(self).setup_table_factureros()
-
     def uiFunctions(self):
         self.ui_functions = UIFunctions(self)
 
@@ -181,6 +186,9 @@ class MainWindow(QMainWindow):
 
             # SET HACKS
             AppFunctions(self).setThemeHack()
+
+    def facturerosFunctions(self):
+        self.factureros_functions = FacturerosFunctions(self)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

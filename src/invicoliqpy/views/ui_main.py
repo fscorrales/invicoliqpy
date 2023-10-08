@@ -23,7 +23,7 @@ from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplicat
     QSlider, QStackedWidget, QTabWidget, QTableView,
     QTableWidget, QTableWidgetItem, QTextEdit, QVBoxLayout,
     QWidget)
-from invicoliqpy.views.resources_rc import *
+from invicoliqpy.views import resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -1402,52 +1402,52 @@ class Ui_MainWindow(object):
         self.groupBox.setSizePolicy(sizePolicy4)
         self.groupBox.setFlat(False)
         self.groupBox.setCheckable(False)
-        self.tableViewTest = QTableView(self.groupBox)
-        self.tableViewTest.setObjectName(u"tableViewTest")
-        self.tableViewTest.setGeometry(QRect(10, 70, 481, 471))
-        sizePolicy.setHeightForWidth(self.tableViewTest.sizePolicy().hasHeightForWidth())
-        self.tableViewTest.setSizePolicy(sizePolicy)
+        self.table_factureros = QTableView(self.groupBox)
+        self.table_factureros.setObjectName(u"table_factureros")
+        self.table_factureros.setGeometry(QRect(10, 70, 481, 471))
+        sizePolicy.setHeightForWidth(self.table_factureros.sizePolicy().hasHeightForWidth())
+        self.table_factureros.setSizePolicy(sizePolicy)
         self.verticalLayoutWidget = QWidget(self.groupBox)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
         self.verticalLayoutWidget.setGeometry(QRect(10, 30, 481, 32))
         self.horizontalLayout_6 = QHBoxLayout(self.verticalLayoutWidget)
         self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
         self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.pushButton_3 = QPushButton(self.verticalLayoutWidget)
-        self.pushButton_3.setObjectName(u"pushButton_3")
-        self.pushButton_3.setMinimumSize(QSize(150, 30))
-        self.pushButton_3.setFont(font)
-        self.pushButton_3.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton_3.setStyleSheet(u"background-color: rgb(52, 59, 72);")
+        self.btn_add_facturero = QPushButton(self.verticalLayoutWidget)
+        self.btn_add_facturero.setObjectName(u"btn_add_facturero")
+        self.btn_add_facturero.setMinimumSize(QSize(150, 30))
+        self.btn_add_facturero.setFont(font)
+        self.btn_add_facturero.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_add_facturero.setStyleSheet(u"background-color: rgb(52, 59, 72);")
         icon6 = QIcon()
         icon6.addFile(u":/icons/images/icons/cil-user-follow.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_3.setIcon(icon6)
+        self.btn_add_facturero.setIcon(icon6)
 
-        self.horizontalLayout_6.addWidget(self.pushButton_3)
+        self.horizontalLayout_6.addWidget(self.btn_add_facturero)
 
-        self.pushButton_2 = QPushButton(self.verticalLayoutWidget)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setMinimumSize(QSize(150, 30))
-        self.pushButton_2.setFont(font)
-        self.pushButton_2.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton_2.setStyleSheet(u"background-color: rgb(52, 59, 72);")
+        self.btn_edit_facturero = QPushButton(self.verticalLayoutWidget)
+        self.btn_edit_facturero.setObjectName(u"btn_edit_facturero")
+        self.btn_edit_facturero.setMinimumSize(QSize(150, 30))
+        self.btn_edit_facturero.setFont(font)
+        self.btn_edit_facturero.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_edit_facturero.setStyleSheet(u"background-color: rgb(52, 59, 72);")
         icon7 = QIcon()
         icon7.addFile(u":/icons/images/icons/cil-pencil.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_2.setIcon(icon7)
+        self.btn_edit_facturero.setIcon(icon7)
 
-        self.horizontalLayout_6.addWidget(self.pushButton_2)
+        self.horizontalLayout_6.addWidget(self.btn_edit_facturero)
 
-        self.pushButton_4 = QPushButton(self.verticalLayoutWidget)
-        self.pushButton_4.setObjectName(u"pushButton_4")
-        self.pushButton_4.setMinimumSize(QSize(150, 30))
-        self.pushButton_4.setFont(font)
-        self.pushButton_4.setCursor(QCursor(Qt.PointingHandCursor))
-        self.pushButton_4.setStyleSheet(u"background-color: rgb(52, 59, 72);")
+        self.btn_delete_facturero = QPushButton(self.verticalLayoutWidget)
+        self.btn_delete_facturero.setObjectName(u"btn_delete_facturero")
+        self.btn_delete_facturero.setMinimumSize(QSize(150, 30))
+        self.btn_delete_facturero.setFont(font)
+        self.btn_delete_facturero.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_delete_facturero.setStyleSheet(u"background-color: rgb(52, 59, 72);")
         icon8 = QIcon()
         icon8.addFile(u":/icons/images/icons/cil-x-circle.png", QSize(), QIcon.Normal, QIcon.Off)
-        self.pushButton_4.setIcon(icon8)
+        self.btn_delete_facturero.setIcon(icon8)
 
-        self.horizontalLayout_6.addWidget(self.pushButton_4)
+        self.horizontalLayout_6.addWidget(self.btn_delete_facturero)
 
 
         self.verticalLayout_20.addWidget(self.groupBox)
@@ -1461,7 +1461,7 @@ class Ui_MainWindow(object):
 
         self.extraRightBox = QFrame(self.content)
         self.extraRightBox.setObjectName(u"extraRightBox")
-        self.extraRightBox.setMinimumSize(QSize(340, 0))
+        self.extraRightBox.setMinimumSize(QSize(0, 0))
         self.extraRightBox.setMaximumSize(QSize(0, 16777215))
         self.extraRightBox.setFrameShape(QFrame.NoFrame)
         self.extraRightBox.setFrameShadow(QFrame.Raised)
@@ -1485,11 +1485,11 @@ class Ui_MainWindow(object):
         self.verticalLayout_13.setSpacing(0)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.verticalLayout_13.setContentsMargins(0, 0, 0, 0)
-        self.tabWidget = QTabWidget(self.contentSettings)
-        self.tabWidget.setObjectName(u"tabWidget")
-        self.tabWidget.setStyleSheet(u" background-color: rgb(44, 49, 58);\n"
+        self.rightTabBox = QTabWidget(self.contentSettings)
+        self.rightTabBox.setObjectName(u"rightTabBox")
+        self.rightTabBox.setStyleSheet(u" background-color: rgb(44, 49, 58);\n"
 "border: none;")
-        self.tabWidget.setTabBarAutoHide(False)
+        self.rightTabBox.setTabBarAutoHide(False)
         self.tab = QWidget()
         self.tab.setObjectName(u"tab")
         self.topMenus = QFrame(self.tab)
@@ -1537,12 +1537,12 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_14.addWidget(self.btn_logout)
 
-        self.tabWidget.addTab(self.tab, "")
+        self.rightTabBox.addTab(self.tab, "")
         self.tab_2 = QWidget()
         self.tab_2.setObjectName(u"tab_2")
-        self.tabWidget.addTab(self.tab_2, "")
+        self.rightTabBox.addTab(self.tab_2, "")
 
-        self.verticalLayout_13.addWidget(self.tabWidget)
+        self.verticalLayout_13.addWidget(self.rightTabBox)
 
 
         self.verticalLayout_7.addWidget(self.contentSettings)
@@ -1607,6 +1607,7 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
 
         self.stackedWidget.setCurrentIndex(2)
+        self.rightTabBox.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1729,14 +1730,14 @@ class Ui_MainWindow(object):
         self.tableWidget.setSortingEnabled(__sortingEnabled)
 
         self.groupBox.setTitle(QCoreApplication.translate("MainWindow", u"Factureros", None))
-        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"Agregar", None))
-        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"Editar", None))
-        self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"Eliminar", None))
+        self.btn_add_facturero.setText(QCoreApplication.translate("MainWindow", u"Agregar", None))
+        self.btn_edit_facturero.setText(QCoreApplication.translate("MainWindow", u"Editar", None))
+        self.btn_delete_facturero.setText(QCoreApplication.translate("MainWindow", u"Eliminar", None))
         self.btn_message.setText(QCoreApplication.translate("MainWindow", u"Message", None))
         self.btn_print.setText(QCoreApplication.translate("MainWindow", u"Print", None))
         self.btn_logout.setText(QCoreApplication.translate("MainWindow", u"Logout", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Prueba", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Tab 2", None))
+        self.rightTabBox.setTabText(self.rightTabBox.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Prueba", None))
+        self.rightTabBox.setTabText(self.rightTabBox.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Tab 2", None))
         self.creditsLabel.setText(QCoreApplication.translate("MainWindow", u"By: Wanderson M. Pimenta", None))
         self.version.setText(QCoreApplication.translate("MainWindow", u"v1.0.3", None))
     # retranslateUi

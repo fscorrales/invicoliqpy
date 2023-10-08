@@ -2745,7 +2745,7 @@ background-repeat: no-repeat;</string>
                          <property name="checkable">
                           <bool>false</bool>
                          </property>
-                         <widget class="QTableView" name="tableViewTest">
+                         <widget class="QTableView" name="table_factureros">
                           <property name="geometry">
                            <rect>
                             <x>10</x>
@@ -2772,7 +2772,7 @@ background-repeat: no-repeat;</string>
                           </property>
                           <layout class="QHBoxLayout" name="horizontalLayout_6">
                            <item>
-                            <widget class="QPushButton" name="pushButton_3">
+                            <widget class="QPushButton" name="btn_add_facturero">
                              <property name="minimumSize">
                               <size>
                                <width>150</width>
@@ -2804,7 +2804,7 @@ background-repeat: no-repeat;</string>
                             </widget>
                            </item>
                            <item>
-                            <widget class="QPushButton" name="pushButton_2">
+                            <widget class="QPushButton" name="btn_edit_facturero">
                              <property name="minimumSize">
                               <size>
                                <width>150</width>
@@ -2836,7 +2836,7 @@ background-repeat: no-repeat;</string>
                             </widget>
                            </item>
                            <item>
-                            <widget class="QPushButton" name="pushButton_4">
+                            <widget class="QPushButton" name="btn_delete_facturero">
                              <property name="minimumSize">
                               <size>
                                <width>150</width>
@@ -2882,7 +2882,7 @@ background-repeat: no-repeat;</string>
                  <widget class="QFrame" name="extraRightBox">
                   <property name="minimumSize">
                    <size>
-                    <width>340</width>
+                    <width>0</width>
                     <height>0</height>
                    </size>
                   </property>
@@ -2955,10 +2955,13 @@ background-repeat: no-repeat;</string>
                        <number>0</number>
                       </property>
                       <item>
-                       <widget class="QTabWidget" name="tabWidget">
+                       <widget class="QTabWidget" name="rightTabBox">
                         <property name="styleSheet">
                          <string notr="true"> background-color: rgb(44, 49, 58);
 border: none;</string>
+                        </property>
+                        <property name="currentIndex">
+                         <number>1</number>
                         </property>
                         <property name="tabBarAutoHide">
                          <bool>false</bool>

@@ -48,28 +48,3 @@ class AppFunctions():
         self.main_window.ui.horizontalScrollBar.setStyleSheet("background-color: #6272a4;")
         self.main_window.ui.verticalScrollBar.setStyleSheet("background-color: #6272a4;")
         self.main_window.ui.commandLinkButton.setStyleSheet("color: #ff79c6;")
-
-
-class SetupTables:
-    def __init__(self, main_window):
-        self.main_window = main_window
-    #--------------------------------------------
-    def setup_table_factureros(self):
-        if self.main_window.db.open_connection():
-            table_model = QSqlTableModel()
-            table_model.setTable('factureros')
-            table_model.select()
-
-            table_view = self.main_window.ui.tableViewTest
-            table_view.setModel(table_model)
-
-            # Opcional: configurar el comportamiento de la vista
-            #Set up table properties
-            table_view.setEditTriggers(QAbstractItemView.NoEditTriggers)
-            table_view.verticalHeader().setVisible(False)
-            table_view.hideColumn(0)
-            table_view.resizeColumnsToContents()
-            table_view.setSortingEnabled(True)
-            table_view.sortByColumn(1, Qt.AscendingOrder)
-            #table_view.setGridStyle(Qt.SolidLine)
-            #table_view.setStyleSheet("QTableView { gridline-width: 2px; gridline-color: black; }")
