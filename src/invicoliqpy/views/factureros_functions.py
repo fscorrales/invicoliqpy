@@ -5,8 +5,9 @@ Purpose:
 """
 
 from PySide6.QtSql import QSqlTableModel
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, QRegularExpression
 from PySide6.QtWidgets import QAbstractItemView
+from PySide6.QtGui import QRegularExpressionValidator
 
 # WITH ACCESS TO MAIN WINDOW WIDGETS
 # ///////////////////////////////////////////////////////////////
@@ -23,6 +24,78 @@ class FacturerosFunctions():
         # self.ui.btn_delete.clicked.connect(self.delete_facturero)
         # self.horizontalHeader = self.ui.table.horizontalHeader()
         # self.horizontalHeader.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
+
+        # Input Mask
+        self.main_window.ui.txt_estructura_facturero.setInputMask('99-99-99-99;_')
+        self.main_window.ui.txt_partida_facturero.setInputMask('999;_')
+
+        # Validator
+        self.txt_nombre_facturero_validator = QRegularExpressionValidator(
+            QRegularExpression("[\w áÁéÉíÍóÓúÚñÑüÜ'_,.]+"), 
+            self.main_window.ui.txt_nombre_facturero
+        )
+        self.main_window.ui.txt_nombre_facturero.setValidator(self.txt_nombre_facturero_validator)
+
+    #     # Enable / Disable save button
+    #     self.btn_save = self.ui.btn_box.button(QDialogButtonBox.Save)
+    #     self.enable_btn_save()
+
+    #     #Set slot connection
+    #     self.ui.btn_box.accepted.connect(self.save)
+    #     self.ui.txt_nombre.textChanged.connect(self.enable_btn_save)
+    #     self.ui.txt_estructura.textChanged.connect(self.enable_btn_save)
+    #     self.ui.txt_partida.textChanged.connect(self.enable_btn_save)
+
+    #     #Set Modal
+    #     self.setModal(True)
+
+    # def unique_razon_social(self) -> bool:
+    #     search_value = self.ui.txt_nombre.text()
+        
+    #     # if editing row
+    #     if (self.nombre_edit != None) and (search_value == self.nombre_edit):
+    #         return True
+
+    #     if self.ui.txt_nombre.hasAcceptableInput():
+    #         if sqlite_is_unique('factureros', 'razon_social', 
+    #         search_value):
+    #             return True
+    #         else:
+    #             return False
+
+    # def enable_btn_save(self):
+    #     self.btn_save.setEnabled(False)
+    #     if self.unique_razon_social():
+    #         if (self.ui.txt_estructura.hasAcceptableInput() and 
+    #         self.ui.txt_partida.hasAcceptableInput()):
+    #             self.btn_save.setEnabled(True)
+
+    # def save(self) -> bool:
+    #     if self.ui.txt_estructura.hasAcceptableInput():
+    #         registro = Facturero(
+    #             self.ui.txt_nombre.text(),
+    #             self.ui.txt_estructura.displayText(),
+    #             self.ui.txt_partida.displayText(),
+    #         )
+    #         print(registro)
+    #         try:
+    #             # Create a record
+    #             rec = self.model_facturero.record()
+    #             # Get new row values for the new record
+    #             rec.setGenerated('id', False)
+    #             rec.setValue('razon_social', registro.razon_social)
+    #             rec.setValue('estructura', registro.estructura)
+    #             rec.setValue('partida', registro.partida)
+    #             self.model_facturero.layoutAboutToBeChanged.emit()
+    #             if not self.row_edit:
+    #                 test = self.model_facturero.insertRecord(self.model_facturero.rowCount(), rec)
+    #             else:
+    #                 test = self.model_facturero.updateRowInTable(self.row_edit, rec)
+    #             print(f'¿Se pudo insertar el registro? = {test}')
+    #             self.model_facturero.select()
+    #             return True
+    #         except:
+    #             return False
 
     def setup_table_factureros(self):
         if self.main_window.db.open_connection():

@@ -20,9 +20,9 @@ from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplicat
     QGroupBox, QHBoxLayout, QHeaderView, QLabel,
     QLineEdit, QMainWindow, QPlainTextEdit, QPushButton,
     QRadioButton, QScrollArea, QScrollBar, QSizePolicy,
-    QSlider, QStackedWidget, QTabWidget, QTableView,
-    QTableWidget, QTableWidgetItem, QTextEdit, QVBoxLayout,
-    QWidget)
+    QSlider, QSpacerItem, QStackedWidget, QTabWidget,
+    QTableView, QTableWidget, QTableWidgetItem, QTextEdit,
+    QVBoxLayout, QWidget)
 from invicoliqpy.views import resources_rc
 
 class Ui_MainWindow(object):
@@ -1188,7 +1188,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 218, 218))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 274, 218))
         self.scrollAreaWidgetContents.setStyleSheet(u" QScrollBar:vertical {\n"
 "	border: none;\n"
 "    background: rgb(52, 59, 72);\n"
@@ -1461,7 +1461,7 @@ class Ui_MainWindow(object):
 
         self.extraRightBox = QFrame(self.content)
         self.extraRightBox.setObjectName(u"extraRightBox")
-        self.extraRightBox.setMinimumSize(QSize(0, 0))
+        self.extraRightBox.setMinimumSize(QSize(340, 0))
         self.extraRightBox.setMaximumSize(QSize(0, 16777215))
         self.extraRightBox.setFrameShape(QFrame.NoFrame)
         self.extraRightBox.setFrameShadow(QFrame.Raised)
@@ -1538,9 +1538,86 @@ class Ui_MainWindow(object):
         self.verticalLayout_14.addWidget(self.btn_logout)
 
         self.rightTabBox.addTab(self.tab, "")
-        self.tab_2 = QWidget()
-        self.tab_2.setObjectName(u"tab_2")
-        self.rightTabBox.addTab(self.tab_2, "")
+        self.tab_factureros = QWidget()
+        self.tab_factureros.setObjectName(u"tab_factureros")
+        self.verticalLayoutWidget_2 = QWidget(self.tab_factureros)
+        self.verticalLayoutWidget_2.setObjectName(u"verticalLayoutWidget_2")
+        self.verticalLayoutWidget_2.setGeometry(QRect(10, 10, 321, 245))
+        self.verticalLayout_21 = QVBoxLayout(self.verticalLayoutWidget_2)
+        self.verticalLayout_21.setObjectName(u"verticalLayout_21")
+        self.verticalLayout_21.setContentsMargins(0, 0, 0, 0)
+        self.lbl_nombre_facturero = QLabel(self.verticalLayoutWidget_2)
+        self.lbl_nombre_facturero.setObjectName(u"lbl_nombre_facturero")
+        self.lbl_nombre_facturero.setStyleSheet(u"color: rgb(113, 126, 149);")
+        self.lbl_nombre_facturero.setLineWidth(1)
+        self.lbl_nombre_facturero.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.verticalLayout_21.addWidget(self.lbl_nombre_facturero)
+
+        self.txt_nombre_facturero = QLineEdit(self.verticalLayoutWidget_2)
+        self.txt_nombre_facturero.setObjectName(u"txt_nombre_facturero")
+        self.txt_nombre_facturero.setMinimumSize(QSize(0, 30))
+        self.txt_nombre_facturero.setStyleSheet(u"background-color: rgb(33, 37, 43);")
+
+        self.verticalLayout_21.addWidget(self.txt_nombre_facturero)
+
+        self.verticalSpacer = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.verticalLayout_21.addItem(self.verticalSpacer)
+
+        self.lbl_estructura_facturero = QLabel(self.verticalLayoutWidget_2)
+        self.lbl_estructura_facturero.setObjectName(u"lbl_estructura_facturero")
+        self.lbl_estructura_facturero.setStyleSheet(u"color: rgb(113, 126, 149);")
+        self.lbl_estructura_facturero.setLineWidth(1)
+        self.lbl_estructura_facturero.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.verticalLayout_21.addWidget(self.lbl_estructura_facturero)
+
+        self.txt_estructura_facturero = QLineEdit(self.verticalLayoutWidget_2)
+        self.txt_estructura_facturero.setObjectName(u"txt_estructura_facturero")
+        self.txt_estructura_facturero.setMinimumSize(QSize(0, 30))
+        self.txt_estructura_facturero.setStyleSheet(u"background-color: rgb(33, 37, 43);")
+
+        self.verticalLayout_21.addWidget(self.txt_estructura_facturero)
+
+        self.verticalSpacer_2 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Fixed)
+
+        self.verticalLayout_21.addItem(self.verticalSpacer_2)
+
+        self.lbl_partida_facturero = QLabel(self.verticalLayoutWidget_2)
+        self.lbl_partida_facturero.setObjectName(u"lbl_partida_facturero")
+        self.lbl_partida_facturero.setStyleSheet(u"color: rgb(113, 126, 149);")
+        self.lbl_partida_facturero.setLineWidth(1)
+        self.lbl_partida_facturero.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignVCenter)
+
+        self.verticalLayout_21.addWidget(self.lbl_partida_facturero)
+
+        self.txt_partida_facturero = QLineEdit(self.verticalLayoutWidget_2)
+        self.txt_partida_facturero.setObjectName(u"txt_partida_facturero")
+        self.txt_partida_facturero.setMinimumSize(QSize(0, 30))
+        self.txt_partida_facturero.setStyleSheet(u"background-color: rgb(33, 37, 43);")
+
+        self.verticalLayout_21.addWidget(self.txt_partida_facturero)
+
+        self.btn_cancel_facturero = QPushButton(self.tab_factureros)
+        self.btn_cancel_facturero.setObjectName(u"btn_cancel_facturero")
+        self.btn_cancel_facturero.setGeometry(QRect(10, 270, 156, 30))
+        self.btn_cancel_facturero.setMinimumSize(QSize(150, 30))
+        self.btn_cancel_facturero.setFont(font)
+        self.btn_cancel_facturero.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_cancel_facturero.setStyleSheet(u"background-color: rgb(52, 59, 72);")
+        self.btn_cancel_facturero.setIcon(icon8)
+        self.btn_save_facturero = QPushButton(self.tab_factureros)
+        self.btn_save_facturero.setObjectName(u"btn_save_facturero")
+        self.btn_save_facturero.setGeometry(QRect(170, 270, 156, 30))
+        self.btn_save_facturero.setMinimumSize(QSize(150, 30))
+        self.btn_save_facturero.setFont(font)
+        self.btn_save_facturero.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_save_facturero.setStyleSheet(u"background-color: rgb(52, 59, 72);")
+        icon9 = QIcon()
+        icon9.addFile(u":/icons/images/icons/cil-save.png", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_save_facturero.setIcon(icon9)
+        self.rightTabBox.addTab(self.tab_factureros, "")
 
         self.verticalLayout_13.addWidget(self.rightTabBox)
 
@@ -1737,7 +1814,18 @@ class Ui_MainWindow(object):
         self.btn_print.setText(QCoreApplication.translate("MainWindow", u"Print", None))
         self.btn_logout.setText(QCoreApplication.translate("MainWindow", u"Logout", None))
         self.rightTabBox.setTabText(self.rightTabBox.indexOf(self.tab), QCoreApplication.translate("MainWindow", u"Prueba", None))
-        self.rightTabBox.setTabText(self.rightTabBox.indexOf(self.tab_2), QCoreApplication.translate("MainWindow", u"Tab 2", None))
+        self.lbl_nombre_facturero.setText(QCoreApplication.translate("MainWindow", u"Nombre Completo", None))
+        self.txt_nombre_facturero.setText("")
+        self.txt_nombre_facturero.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Escribe un nombre completo", None))
+        self.lbl_estructura_facturero.setText(QCoreApplication.translate("MainWindow", u"Estructura SIIF (00-00-00-00)", None))
+        self.txt_estructura_facturero.setText("")
+        self.txt_estructura_facturero.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Escribe un estructura program\u00e1tica", None))
+        self.lbl_partida_facturero.setText(QCoreApplication.translate("MainWindow", u"Partida Presupuestaria", None))
+        self.txt_partida_facturero.setText("")
+        self.txt_partida_facturero.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Escribe una partida presupuestaria", None))
+        self.btn_cancel_facturero.setText(QCoreApplication.translate("MainWindow", u"Cancelar", None))
+        self.btn_save_facturero.setText(QCoreApplication.translate("MainWindow", u"Guardar", None))
+        self.rightTabBox.setTabText(self.rightTabBox.indexOf(self.tab_factureros), QCoreApplication.translate("MainWindow", u"Factureros", None))
         self.creditsLabel.setText(QCoreApplication.translate("MainWindow", u"By: Wanderson M. Pimenta", None))
         self.version.setText(QCoreApplication.translate("MainWindow", u"v1.0.3", None))
     # retranslateUi
