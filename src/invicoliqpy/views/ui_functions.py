@@ -50,8 +50,8 @@ class UIFunctions:
             self.bottom_grip.hide()
         else:
             GLOBAL_STATE = False
-            self.showNormal()
-            self.resize(self.width()+1, self.height()+1)
+            self.main_window.showNormal()
+            self.main_window.resize(self.main_window.width()+1, self.main_window.height()+1)
             self.main_window.ui.appMargins.setContentsMargins(10, 10, 10, 10)
             self.main_window.ui.maximizeRestoreAppBtn.setToolTip("Maximize")
             self.main_window.ui.maximizeRestoreAppBtn.setIcon(QIcon(u":/icons/images/icons/icon_maximize.png"))
@@ -63,7 +63,7 @@ class UIFunctions:
 
     # RETURN STATUS
     # ///////////////////////////////////////////////////////////////
-    def returStatus(self):
+    def returnStatus(self):
         return GLOBAL_STATE
 
     # SET STATUS
@@ -230,26 +230,26 @@ class UIFunctions:
 
         if Settings.ENABLE_CUSTOM_TITLE_BAR:
             #STANDARD TITLE BAR
-            self.setWindowFlags(Qt.FramelessWindowHint)
-            self.setAttribute(Qt.WA_TranslucentBackground)
+            self.main_window.setWindowFlags(Qt.FramelessWindowHint)
+            self.main_window.setAttribute(Qt.WA_TranslucentBackground)
 
             # MOVE WINDOW / MAXIMIZE / RESTORE
             def moveWindow(event):
                 # IF MAXIMIZED CHANGE TO NORMAL
-                if UIFunctions.returStatus(self):
+                if UIFunctions.returnStatus(self):
                     UIFunctions.maximize_restore(self)
                 # MOVE WINDOW
                 if event.buttons() == Qt.LeftButton:
-                    self.move(self.pos() + event.globalPos() - self.dragPos)
-                    self.dragPos = event.globalPos()
+                    self.main_window.move(self.main_window.pos() + event.globalPos() - self.main_window.dragPos)
+                    self.main_window.dragPos = event.globalPos()
                     event.accept()
             self.main_window.ui.titleRightInfo.mouseMoveEvent = moveWindow
 
             # CUSTOM GRIPS
-            self.left_grip = CustomGrip(self, Qt.LeftEdge, True)
-            self.right_grip = CustomGrip(self, Qt.RightEdge, True)
-            self.top_grip = CustomGrip(self, Qt.TopEdge, True)
-            self.bottom_grip = CustomGrip(self, Qt.BottomEdge, True)
+            self.left_grip = CustomGrip(self.main_window, Qt.LeftEdge, True)
+            self.right_grip = CustomGrip(self.main_window, Qt.RightEdge, True)
+            self.top_grip = CustomGrip(self.main_window, Qt.TopEdge, True)
+            self.bottom_grip = CustomGrip(self.main_window, Qt.BottomEdge, True)
 
         else:
             self.main_window.ui.appMargins.setContentsMargins(0, 0, 0, 0)
@@ -271,20 +271,20 @@ class UIFunctions:
         self.sizegrip.setStyleSheet("width: 20px; height: 20px; margin 0px; padding: 0px;")
 
         # MINIMIZE
-        self.main_window.ui.minimizeAppBtn.clicked.connect(lambda: self.showMinimized())
+        self.main_window.ui.minimizeAppBtn.clicked.connect(lambda: self.main_window.showMinimized())
 
         # MAXIMIZE/RESTORE
         self.main_window.ui.maximizeRestoreAppBtn.clicked.connect(lambda: UIFunctions.maximize_restore(self))
 
         # CLOSE APPLICATION
-        self.main_window.ui.closeAppBtn.clicked.connect(lambda: self.close())
+        self.main_window.ui.closeAppBtn.clicked.connect(lambda: self.main_window.close())
 
     def resize_grips(self):
         if Settings.ENABLE_CUSTOM_TITLE_BAR:
-            self.left_grip.setGeometry(0, 10, 10, self.height())
-            self.right_grip.setGeometry(self.width() - 10, 10, 10, self.height())
-            self.top_grip.setGeometry(0, 0, self.width(), 10)
-            self.bottom_grip.setGeometry(0, self.height() - 10, self.width(), 10)
+            self.left_grip.setGeometry(0, 10, 10, self.main_window.height())
+            self.right_grip.setGeometry(self.main_window.width() - 10, 10, 10, self.main_window.height())
+            self.top_grip.setGeometry(0, 0, self.main_window.width(), 10)
+            self.bottom_grip.setGeometry(0, self.main_window.height() - 10, self.main_window.width(), 10)
 
     # ///////////////////////////////////////////////////////////////
     # END - GUI DEFINITIONS
