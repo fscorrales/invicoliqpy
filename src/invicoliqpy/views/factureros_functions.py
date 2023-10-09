@@ -20,7 +20,7 @@ class FacturerosFunctions():
         #Set slot connection
         # headerview.textChanged.connect(self.on_text_changed)
         self.main_window.ui.btn_add_facturero.clicked.connect(self.add_facturero)
-        # self.ui.btn_edit.clicked.connect(self.edit_facturero)
+        self.main_window.ui.btn_edit_facturero.clicked.connect(self.edit_facturero)
         # self.ui.btn_delete.clicked.connect(self.delete_facturero)
         # self.horizontalHeader = self.ui.table.horizontalHeader()
         # self.horizontalHeader.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
@@ -99,12 +99,12 @@ class FacturerosFunctions():
 
     def setup_table_factureros(self):
         if self.main_window.db.open_connection():
-            table_model = QSqlTableModel()
-            table_model.setTable('factureros')
-            table_model.select()
+            self.model_factureros = QSqlTableModel()
+            self.model_factureros.setTable('factureros')
+            self.model_factureros.select()
 
             table_view = self.main_window.ui.table_factureros
-            table_view.setModel(table_model)
+            table_view.setModel(self.model_factureros)
 
             # Opcional: configurar el comportamiento de la vista
             #Set up table properties
@@ -121,3 +121,29 @@ class FacturerosFunctions():
         # Open second window
         self.main_window.ui.rightTabBox.setTabVisible(1, True)
         self.main_window.ui_functions.toggleRightBox(True)
+
+    def edit_facturero(self):
+        pass
+        # # Open second window
+        # self.main_window.ui.rightTabBox.setTabVisible(1, True)
+        # indexes = self.main_window.ui.table_factureros.selectedIndexes()
+        # if indexes:
+        #     #Retrive the index row
+        #     index = self.proxy.mapToSource(indexes[0])
+        #     row = index.row()
+        #     #Get index of each column of selected row
+        #     facturero_id = self.model_factureros.index(row, 0)
+        #     facturero_nombre = self.model_factureros.index(row, 1)
+        #     facturero_estructura = self.model_factureros.index(row, 2)
+        #     facturero_partida = self.model_factureros.index(row, 3)
+        #     #Get data of selected row
+        #     facturero_id = self.model_factureros.data(facturero_id, role=0)
+        #     facturero_nombre = self.model_factureros.data(facturero_nombre, role=0)
+        #     facturero_estructura = self.model_factureros.data(facturero_estructura, role=0)
+        #     facturero_partida = self.model_factureros.data(facturero_partida, role=0)
+        #     # Open second right menu box
+        #     # self.window_add_facturero = FormFacturero(self.model, row, facturero_nombre)
+        #     self.main_window.ui.txt_nombre_facturero.setText(facturero_nombre)
+        #     self.main_window.ui.txt_estructura_facturero.setText(facturero_estructura)
+        #     self.main_window.ui.txt_partida.setText(facturero_partida)
+        #     self.main_window.ui_functions.toggleRightBox(True)
