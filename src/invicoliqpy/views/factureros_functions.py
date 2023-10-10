@@ -8,6 +8,7 @@ from PySide6.QtSql import QSqlTableModel
 from PySide6.QtCore import Qt, QRegularExpression
 from PySide6.QtWidgets import QAbstractItemView
 from PySide6.QtGui import QRegularExpressionValidator
+from invicoliqpy.utils.sql_utils import SQLUtils
 
 # WITH ACCESS TO MAIN WINDOW WIDGETS
 # ///////////////////////////////////////////////////////////////
@@ -36,39 +37,43 @@ class FacturerosFunctions():
         )
         self.main_window.ui.txt_nombre_facturero.setValidator(self.txt_nombre_facturero_validator)
 
-    #     # Enable / Disable save button
-    #     self.btn_save = self.ui.btn_box.button(QDialogButtonBox.Save)
-    #     self.enable_btn_save()
+        # Enable / Disable save button
+        self.enable_btn_save_facturero()
 
-    #     #Set slot connection
-    #     self.ui.btn_box.accepted.connect(self.save)
-    #     self.ui.txt_nombre.textChanged.connect(self.enable_btn_save)
-    #     self.ui.txt_estructura.textChanged.connect(self.enable_btn_save)
-    #     self.ui.txt_partida.textChanged.connect(self.enable_btn_save)
+        #Set slot connection
+        self.main_window.ui.txt_nombre_facturero.textChanged.connect(
+            self.enable_btn_save_facturero
+        )
+        self.main_window.ui.txt_estructura_facturero.textChanged.connect(
+            self.enable_btn_save_facturero
+        )
+        self.main_window.ui.txt_partida_facturero.textChanged.connect(
+            self.enable_btn_save_facturero
+        )
 
     #     #Set Modal
     #     self.setModal(True)
 
-    # def unique_razon_social(self) -> bool:
-    #     search_value = self.ui.txt_nombre.text()
+    def unique_razon_social_facturero(self) -> bool:
+        search_value = self.main_window.ui.txt_nombre_facturero.text()
         
-    #     # if editing row
-    #     if (self.nombre_edit != None) and (search_value == self.nombre_edit):
-    #         return True
+        # if editing row
+        # if (self.nombre_edit != None) and (search_value == self.nombre_edit):
+        #     return True
 
-    #     if self.ui.txt_nombre.hasAcceptableInput():
-    #         if sqlite_is_unique('factureros', 'razon_social', 
-    #         search_value):
-    #             return True
-    #         else:
-    #             return False
+        if self.main_window.ui.txt_nombre_facturero.hasAcceptableInput():
+            if SQLUtils().sqlite_is_unique('factureros', 'razon_social', 
+            search_value):
+                return True
+            else:
+                return False
 
-    # def enable_btn_save(self):
-    #     self.btn_save.setEnabled(False)
-    #     if self.unique_razon_social():
-    #         if (self.ui.txt_estructura.hasAcceptableInput() and 
-    #         self.ui.txt_partida.hasAcceptableInput()):
-    #             self.btn_save.setEnabled(True)
+    def enable_btn_save_facturero(self):
+        self.main_window.ui.btn_save_facturero.setEnabled(False)
+        if self.unique_razon_social_facturero():
+            if (self.main_window.ui.txt_estructura_facturero.hasAcceptableInput() and 
+            self.main_window.ui.txt_partida_facturero.hasAcceptableInput()):
+                self.main_window.ui.btn_save_facturero.setEnabled(True)
 
     # def save(self) -> bool:
     #     if self.ui.txt_estructura.hasAcceptableInput():
@@ -120,30 +125,32 @@ class FacturerosFunctions():
     def add_facturero(self):
         # Open second window
         self.main_window.ui.rightTabBox.setTabVisible(1, True)
+        self.main_window.ui.txt_nombre_facturero.setText("")
+        self.main_window.ui.txt_estructura_facturero.setText("")
+        self.main_window.ui.txt_partida_facturero.setText("")
         self.main_window.ui_functions.toggleRightBox(True)
 
     def edit_facturero(self):
-        pass
-        # # Open second window
-        # self.main_window.ui.rightTabBox.setTabVisible(1, True)
-        # indexes = self.main_window.ui.table_factureros.selectedIndexes()
-        # if indexes:
-        #     #Retrive the index row
-        #     index = self.proxy.mapToSource(indexes[0])
-        #     row = index.row()
-        #     #Get index of each column of selected row
-        #     facturero_id = self.model_factureros.index(row, 0)
-        #     facturero_nombre = self.model_factureros.index(row, 1)
-        #     facturero_estructura = self.model_factureros.index(row, 2)
-        #     facturero_partida = self.model_factureros.index(row, 3)
-        #     #Get data of selected row
-        #     facturero_id = self.model_factureros.data(facturero_id, role=0)
-        #     facturero_nombre = self.model_factureros.data(facturero_nombre, role=0)
-        #     facturero_estructura = self.model_factureros.data(facturero_estructura, role=0)
-        #     facturero_partida = self.model_factureros.data(facturero_partida, role=0)
-        #     # Open second right menu box
-        #     # self.window_add_facturero = FormFacturero(self.model, row, facturero_nombre)
-        #     self.main_window.ui.txt_nombre_facturero.setText(facturero_nombre)
-        #     self.main_window.ui.txt_estructura_facturero.setText(facturero_estructura)
-        #     self.main_window.ui.txt_partida.setText(facturero_partida)
-        #     self.main_window.ui_functions.toggleRightBox(True)
+        self.main_window.ui.rightTabBox.setTabVisible(1, True)
+        indexes = self.main_window.ui.table_factureros.selectedIndexes()
+        if indexes:
+            #Retrive the index row
+            index = indexes[0]
+            row = index.row()
+            # index = self.proxy.mapToSource(indexes[0])
+            # row = index.row()
+            #Get index of each column of selected row
+            facturero_id = self.model_factureros.index(row, 0)
+            facturero_nombre = self.model_factureros.index(row, 1)
+            facturero_estructura = self.model_factureros.index(row, 2)
+            facturero_partida = self.model_factureros.index(row, 3)
+            #Get data of selected row
+            facturero_id = self.model_factureros.data(facturero_id, role=0)
+            facturero_nombre = self.model_factureros.data(facturero_nombre, role=0)
+            facturero_estructura = self.model_factureros.data(facturero_estructura, role=0)
+            facturero_partida = self.model_factureros.data(facturero_partida, role=0)
+            # Open second right menu box
+            self.main_window.ui.txt_nombre_facturero.setText(facturero_nombre)
+            self.main_window.ui.txt_estructura_facturero.setText(facturero_estructura)
+            self.main_window.ui.txt_partida_facturero.setText(facturero_partida)
+            self.main_window.ui_functions.toggleRightBox(True)

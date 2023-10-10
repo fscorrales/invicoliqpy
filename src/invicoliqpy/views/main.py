@@ -28,7 +28,7 @@ from invicoliqpy.views.app_settings import Settings
 from invicoliqpy.models.database_manager import DatabaseManager
 from invicoliqpy.views.ui_functions import UIFunctions
 from invicoliqpy.views.ui_main import Ui_MainWindow
-from invicoliqpy.views.utils import HanglingPath
+from invicoliqpy.utils.hangling_path import HanglingPath
 
 # IMPORT / GUI AND MODULES AND WIDGETS
 # ///////////////////////////////////////////////////////////////
