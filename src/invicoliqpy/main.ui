@@ -25,7 +25,6 @@
     <font>
      <family>Segoe UI</family>
      <pointsize>10</pointsize>
-     <weight>50</weight>
      <italic>false</italic>
      <bold>false</bold>
     </font>
@@ -678,7 +677,6 @@ Button */
               <font>
                <family>Segoe UI Semibold</family>
                <pointsize>12</pointsize>
-               <weight>8</weight>
                <italic>false</italic>
                <bold>false</bold>
               </font>
@@ -709,7 +707,6 @@ Button */
               <font>
                <family>Segoe UI</family>
                <pointsize>8</pointsize>
-               <weight>50</weight>
                <italic>false</italic>
                <bold>false</bold>
               </font>
@@ -795,7 +792,6 @@ Button */
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
@@ -859,7 +855,6 @@ Button */
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
@@ -896,7 +891,6 @@ Button */
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
@@ -933,7 +927,6 @@ Button */
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
@@ -970,7 +963,6 @@ Button */
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
@@ -1007,7 +999,6 @@ Button */
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
@@ -1071,7 +1062,6 @@ Button */
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
@@ -1326,7 +1316,6 @@ Button */
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
@@ -1363,7 +1352,6 @@ Button */
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
@@ -1400,7 +1388,6 @@ Button */
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
@@ -1450,8 +1437,11 @@ Button */
                   </property>
                   <property name="html">
                    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ff79c6;&quot;&gt;PyDracula&lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;An interface created using Python and PySide (support for PyQt), and with colors based on the Dracula theme created by Zeno Rocha.&lt;/span&gt;&lt;/p&gt;
@@ -1591,7 +1581,6 @@ p, li { white-space: pre-wrap; }
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
@@ -1725,7 +1714,6 @@ p, li { white-space: pre-wrap; }
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>10</pointsize>
-                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                     <stylestrategy>PreferDefault</stylestrategy>
@@ -1984,7 +1972,6 @@ background-repeat: no-repeat;</string>
                                    <font>
                                     <family>Segoe UI</family>
                                     <pointsize>10</pointsize>
-                                    <weight>50</weight>
                                     <italic>false</italic>
                                     <bold>false</bold>
                                    </font>
@@ -2045,7 +2032,6 @@ background-repeat: no-repeat;</string>
                                      <font>
                                       <family>Segoe UI</family>
                                       <pointsize>10</pointsize>
-                                      <weight>50</weight>
                                       <italic>false</italic>
                                       <bold>false</bold>
                                      </font>
@@ -2180,7 +2166,7 @@ background-repeat: no-repeat;</string>
                                 <rect>
                                  <x>0</x>
                                  <y>0</y>
-                                 <width>274</width>
+                                 <width>218</width>
                                  <height>218</height>
                                 </rect>
                                </property>
@@ -2217,7 +2203,6 @@ background-repeat: no-repeat;</string>
                                <font>
                                 <family>Segoe UI</family>
                                 <pointsize>10</pointsize>
-                                <weight>50</weight>
                                 <italic>false</italic>
                                 <bold>false</bold>
                                </font>
@@ -2403,7 +2388,7 @@ background-repeat: no-repeat;</string>
                                </colorrole>
                                <colorrole role="PlaceholderText">
                                 <brush brushstyle="SolidPattern">
-                                 <color alpha="255">
+                                 <color alpha="128">
                                   <red>221</red>
                                   <green>221</green>
                                   <blue>221</blue>
@@ -2468,7 +2453,7 @@ background-repeat: no-repeat;</string>
                                </colorrole>
                                <colorrole role="PlaceholderText">
                                 <brush brushstyle="SolidPattern">
-                                 <color alpha="255">
+                                 <color alpha="128">
                                   <red>221</red>
                                   <green>221</green>
                                   <blue>221</blue>
@@ -2533,7 +2518,7 @@ background-repeat: no-repeat;</string>
                                </colorrole>
                                <colorrole role="PlaceholderText">
                                 <brush brushstyle="SolidPattern">
-                                 <color alpha="255">
+                                 <color alpha="128">
                                   <red>221</red>
                                   <green>221</green>
                                   <blue>221</blue>
@@ -2727,14 +2712,26 @@ background-repeat: no-repeat;</string>
                       </layout>
                      </widget>
                      <widget class="QWidget" name="new_page">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
                       <layout class="QVBoxLayout" name="verticalLayout_20">
                        <item>
                         <widget class="QGroupBox" name="groupBox">
                          <property name="sizePolicy">
-                          <sizepolicy hsizetype="Ignored" vsizetype="Preferred">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                            <horstretch>0</horstretch>
                            <verstretch>0</verstretch>
                           </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>500</width>
+                           <height>0</height>
+                          </size>
                          </property>
                          <property name="title">
                           <string>Factureros</string>
@@ -2751,7 +2748,7 @@ background-repeat: no-repeat;</string>
                             <x>10</x>
                             <y>70</y>
                             <width>481</width>
-                            <height>471</height>
+                            <height>501</height>
                            </rect>
                           </property>
                           <property name="sizePolicy">
@@ -2783,7 +2780,6 @@ background-repeat: no-repeat;</string>
                               <font>
                                <family>Segoe UI</family>
                                <pointsize>10</pointsize>
-                               <weight>50</weight>
                                <italic>false</italic>
                                <bold>false</bold>
                               </font>
@@ -2815,7 +2811,6 @@ background-repeat: no-repeat;</string>
                               <font>
                                <family>Segoe UI</family>
                                <pointsize>10</pointsize>
-                               <weight>50</weight>
                                <italic>false</italic>
                                <bold>false</bold>
                               </font>
@@ -2847,7 +2842,6 @@ background-repeat: no-repeat;</string>
                               <font>
                                <family>Segoe UI</family>
                                <pointsize>10</pointsize>
-                               <weight>50</weight>
                                <italic>false</italic>
                                <bold>false</bold>
                               </font>
@@ -2932,6 +2926,15 @@ background-repeat: no-repeat;</string>
                    </item>
                    <item>
                     <widget class="QFrame" name="contentSettings">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true"/>
+                     </property>
                      <property name="frameShape">
                       <enum>QFrame::NoFrame</enum>
                      </property>
@@ -2956,15 +2959,30 @@ background-repeat: no-repeat;</string>
                       </property>
                       <item>
                        <widget class="QTabWidget" name="rightTabBox">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>400</width>
+                          <height>0</height>
+                         </size>
+                        </property>
                         <property name="styleSheet">
-                         <string notr="true"> background-color: rgb(44, 49, 58);
+                         <string notr="true">background-color: rgb(44, 49, 58);
 border: none;</string>
                         </property>
                         <property name="currentIndex">
                          <number>1</number>
                         </property>
+                        <property name="usesScrollButtons">
+                         <bool>true</bool>
+                        </property>
                         <property name="tabBarAutoHide">
-                         <bool>false</bool>
+                         <bool>true</bool>
                         </property>
                         <widget class="QWidget" name="tab">
                          <attribute name="title">
@@ -3019,7 +3037,6 @@ border: none;</string>
                               <font>
                                <family>Segoe UI</family>
                                <pointsize>10</pointsize>
-                               <weight>50</weight>
                                <italic>false</italic>
                                <bold>false</bold>
                               </font>
@@ -3056,7 +3073,6 @@ border: none;</string>
                               <font>
                                <family>Segoe UI</family>
                                <pointsize>10</pointsize>
-                               <weight>50</weight>
                                <italic>false</italic>
                                <bold>false</bold>
                               </font>
@@ -3093,7 +3109,6 @@ border: none;</string>
                               <font>
                                <family>Segoe UI</family>
                                <pointsize>10</pointsize>
-                               <weight>50</weight>
                                <italic>false</italic>
                                <bold>false</bold>
                               </font>
@@ -3287,7 +3302,6 @@ border: none;</string>
                            <font>
                             <family>Segoe UI</family>
                             <pointsize>10</pointsize>
-                            <weight>50</weight>
                             <italic>false</italic>
                             <bold>false</bold>
                            </font>
@@ -3325,7 +3339,6 @@ border: none;</string>
                            <font>
                             <family>Segoe UI</family>
                             <pointsize>10</pointsize>
-                            <weight>50</weight>
                             <italic>false</italic>
                             <bold>false</bold>
                            </font>
@@ -3404,7 +3417,6 @@ border: none;</string>
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>-1</pointsize>
-                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
