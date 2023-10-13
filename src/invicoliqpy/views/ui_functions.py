@@ -153,6 +153,13 @@ class UIFunctions:
             
             UIFunctions.start_box_animation(self, widthLeftBox, width, "right")
 
+    def isRightBoxToggled(self):
+        width = self.main_window.ui.extraRightBox.width()
+        if width > 0:
+            return True
+        else:
+            return False
+
     def start_box_animation(self, left_box_width, right_box_width, direction):
         right_width = 0
         left_width = 0 

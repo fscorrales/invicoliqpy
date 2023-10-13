@@ -14,56 +14,15 @@ Menú desplegable izquierdo (extraLeftBox) que debería editar (agregar Tab Widg
 1) El menu no se ve en la interfaz Qt Designer porque la propiedad minimumSize Width de extraLeftBox esta en 0. Hay que cambiar el valor de la misma para poder trabajar allí.
 2) Además en el archivo app_settings se configura, de manera predeterminada, que el ancho máximo de la misma (LEFT_BOX_WIDTH) sea igual a 240 (se puede cambiar esto)
 
-import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTabWidget, QPushButton, QVBoxLayout, QWidget
+Cambiar el formato del QMessageBox en el style.qss
+/* style.qss */
+QMessageBox {
+    /* Estilos para el cuadro de mensaje */
+}
 
-class MyWindow(QMainWindow):
-    def __init__(self):
-        super().__init__()
+QMessageBox QLabel {
+    /* Estilos para las etiquetas en el cuadro de mensaje */
+}
 
-        self.setGeometry(100, 100, 400, 300)
-        self.setWindowTitle("Ejemplo de QTabWidget")
-
-        # Crear el QTabWidget
-        self.tab_widget = QTabWidget(self)
-        self.tab_widget.setGeometry(10, 10, 380, 200)
-
-        # Crear pestañas
-        tab1 = QWidget()
-        tab2 = QWidget()
-        tab3 = QWidget()
-
-        # Agregar contenido a las pestañas (por ejemplo, etiquetas de texto)
-        tab1_layout = QVBoxLayout()
-        tab1_layout.addWidget(QPushButton("Botón en la pestaña 1"))
-        tab1.setLayout(tab1_layout)
-
-        tab2_layout = QVBoxLayout()
-        tab2_layout.addWidget(QPushButton("Botón en la pestaña 2"))
-        tab2.setLayout(tab2_layout)
-
-        tab3_layout = QVBoxLayout()
-        tab3_layout.addWidget(QPushButton("Botón en la pestaña 3"))
-        tab3.setLayout(tab3_layout)
-
-        # Agregar pestañas al QTabWidget
-        self.tab_widget.addTab(tab1, "Pestaña 1")
-        self.tab_widget.addTab(tab2, "Pestaña 2")
-        self.tab_widget.addTab(tab3, "Pestaña 3")
-
-        # Crear un botón para mostrar una pestaña específica
-        self.boton_mostrar_tab = QPushButton("Mostrar Pestaña 2", self)
-        self.boton_mostrar_tab.setGeometry(10, 220, 150, 30)
-        self.boton_mostrar_tab.clicked.connect(self.mostrar_tab2)
-
-    def mostrar_tab2(self):
-        # Mostrar la pestaña 2
-        self.tab_widget.setCurrentIndex(1) 
-        # self.tab_widget.setCurrentWidget(self.tab1)        
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    window = MyWindow()
-    window.show()
-    sys.exit(app.exec_())
+/* ... Agrega más estilos personalizados según sea necesario ... */
 

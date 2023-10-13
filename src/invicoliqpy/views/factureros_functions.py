@@ -6,23 +6,34 @@ Purpose:
 
 from PySide6.QtSql import QSqlTableModel
 from PySide6.QtCore import Qt, QRegularExpression
-from PySide6.QtWidgets import QAbstractItemView
+from PySide6.QtWidgets import QAbstractItemView, QMessageBox
 from PySide6.QtGui import QRegularExpressionValidator
 from invicoliqpy.utils.sql_utils import SQLUtils
+from dataclasses import dataclass
 
-# WITH ACCESS TO MAIN WINDOW WIDGETS
-# ///////////////////////////////////////////////////////////////
+@dataclass
+class Facturero():
+    razon_social: str = ''
+    estructura: str = ''
+    partida: str = ''
+
 class FacturerosFunctions():
     def __init__(self, main_window):
         self.main_window = main_window
         self.main_window.ui.rightTabBox.setTabVisible(1, False)
-        self.setup_table_factureros()
+        self.setupTableFactureros()
+        
+        # Set Edit Flag
+        self.nombre_facturero_to_edit = None
+        self.row_facturero_to_edit = None
 
         #Set slot connection
         # headerview.textChanged.connect(self.on_text_changed)
-        self.main_window.ui.btn_add_facturero.clicked.connect(self.add_facturero)
-        self.main_window.ui.btn_edit_facturero.clicked.connect(self.edit_facturero)
-        # self.ui.btn_delete.clicked.connect(self.delete_facturero)
+        self.main_window.ui.btn_add_facturero.clicked.connect(self.addFacturero)
+        self.main_window.ui.btn_edit_facturero.clicked.connect(self.editFacturero)
+        self.main_window.ui.btn_delete_facturero.clicked.connect(self.deleteFacturero)
+        self.main_window.ui.btn_cancel_facturero.clicked.connect(self.cleanFactureroForm)
+        self.main_window.ui.btn_save_facturero.clicked.connect(self.saveFacturero)
         # self.horizontalHeader = self.ui.table.horizontalHeader()
         # self.horizontalHeader.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
 
@@ -38,28 +49,31 @@ class FacturerosFunctions():
         self.main_window.ui.txt_nombre_facturero.setValidator(self.txt_nombre_facturero_validator)
 
         # Enable / Disable save button
-        self.enable_btn_save_facturero()
+        self.enableBtnSaveFacturero()
 
         #Set slot connection
         self.main_window.ui.txt_nombre_facturero.textChanged.connect(
-            self.enable_btn_save_facturero
+            self.enableBtnSaveFacturero
         )
         self.main_window.ui.txt_estructura_facturero.textChanged.connect(
-            self.enable_btn_save_facturero
+            self.enableBtnSaveFacturero
         )
         self.main_window.ui.txt_partida_facturero.textChanged.connect(
-            self.enable_btn_save_facturero
+            self.enableBtnSaveFacturero
         )
 
     #     #Set Modal
     #     self.setModal(True)
 
-    def unique_razon_social_facturero(self) -> bool:
+    def uniqueRazonSocialFacturero(self) -> bool:
         search_value = self.main_window.ui.txt_nombre_facturero.text()
         
         # if editing row
-        # if (self.nombre_edit != None) and (search_value == self.nombre_edit):
-        #     return True
+        # print(self.nombre_facturero_to_edit)
+        # print(search_value)
+        if ((self.nombre_facturero_to_edit != None) and 
+            (search_value == self.nombre_facturero_to_edit)):
+            return True
 
         if self.main_window.ui.txt_nombre_facturero.hasAcceptableInput():
             if SQLUtils().sqlite_is_unique('factureros', 'razon_social', 
@@ -68,44 +82,59 @@ class FacturerosFunctions():
             else:
                 return False
 
-    def enable_btn_save_facturero(self):
+    def enableBtnSaveFacturero(self):
         self.main_window.ui.btn_save_facturero.setEnabled(False)
-        if self.unique_razon_social_facturero():
+        if self.uniqueRazonSocialFacturero():
+            # print('Unique Facturero')
             if (self.main_window.ui.txt_estructura_facturero.hasAcceptableInput() and 
             self.main_window.ui.txt_partida_facturero.hasAcceptableInput()):
+                # print(f'Estructura: {self.main_window.ui.txt_estructura_facturero.hasAcceptableInput()}')
+                # print(f'Partida: {self.main_window.ui.txt_partida_facturero.hasAcceptableInput()}')
                 self.main_window.ui.btn_save_facturero.setEnabled(True)
 
-    # def save(self) -> bool:
-    #     if self.ui.txt_estructura.hasAcceptableInput():
-    #         registro = Facturero(
-    #             self.ui.txt_nombre.text(),
-    #             self.ui.txt_estructura.displayText(),
-    #             self.ui.txt_partida.displayText(),
-    #         )
-    #         print(registro)
-    #         try:
-    #             # Create a record
-    #             rec = self.model_facturero.record()
-    #             # Get new row values for the new record
-    #             rec.setGenerated('id', False)
-    #             rec.setValue('razon_social', registro.razon_social)
-    #             rec.setValue('estructura', registro.estructura)
-    #             rec.setValue('partida', registro.partida)
-    #             self.model_facturero.layoutAboutToBeChanged.emit()
-    #             if not self.row_edit:
-    #                 test = self.model_facturero.insertRecord(self.model_facturero.rowCount(), rec)
-    #             else:
-    #                 test = self.model_facturero.updateRowInTable(self.row_edit, rec)
-    #             print(f'¿Se pudo insertar el registro? = {test}')
-    #             self.model_facturero.select()
-    #             return True
-    #         except:
-    #             return False
+    def saveFacturero(self) -> bool:
+        if self.main_window.ui.txt_estructura_facturero.hasAcceptableInput():
+            registro = Facturero(
+                self.main_window.ui.txt_nombre_facturero.text(),
+                self.main_window.ui.txt_estructura_facturero.displayText(),
+                self.main_window.ui.txt_partida_facturero.displayText(),
+            )
+            print(registro)
+            try:
+                self.model_factureros.layoutAboutToBeChanged.emit()
+                # Create a record
+                if self.row_facturero_to_edit == None:
+                    rec = self.model_factureros.record()
+                else:
+                    rec = self.model_factureros.record(self.row_facturero_to_edit)
+                # Get new row values for the new record
+                rec.setGenerated('id', False)
+                rec.setValue('razon_social', registro.razon_social)
+                rec.setValue('estructura', registro.estructura)
+                rec.setValue('partida', registro.partida)
+                # Add / Edit field
+                if self.row_facturero_to_edit == None:
+                    success = self.model_factureros.insertRecord(self.model_factureros.rowCount(), rec)
+                    print(f'¿Se pudo insertar el registro? = {success}')
+                else:
+                    try:
+                        success = self.model_factureros.setRecord(self.row_facturero_to_edit, rec)
+                        self.model_factureros.submitAll()
+                        print(f'¿Se pudo actualizar el registro? = {success}')
+                    except Exception as e:
+                        print(f'Error al actualizar el registro: {str(e)}')
+                if success:
+                    self.cleanFactureroForm()
+                    self.model_factureros.select()
+                    return True
+            except:
+                return False
 
-    def setup_table_factureros(self):
+    def setupTableFactureros(self):
         if self.main_window.db.open_connection():
             self.model_factureros = QSqlTableModel()
             self.model_factureros.setTable('factureros')
+            self.model_factureros.setEditStrategy(QSqlTableModel.OnFieldChange)
             self.model_factureros.select()
 
             table_view = self.main_window.ui.table_factureros
@@ -122,35 +151,80 @@ class FacturerosFunctions():
             #table_view.setGridStyle(Qt.SolidLine)
             #table_view.setStyleSheet("QTableView { gridline-width: 2px; gridline-color: black; }")        
 
-    def add_facturero(self):
+    def addFacturero(self):
         # Open second window
         self.main_window.ui.rightTabBox.setTabVisible(1, True)
         self.main_window.ui.txt_nombre_facturero.setText("")
         self.main_window.ui.txt_estructura_facturero.setText("")
         self.main_window.ui.txt_partida_facturero.setText("")
-        self.main_window.ui_functions.toggleRightBox(True)
+        if not self.main_window.ui_functions.isRightBoxToggled():
+            self.main_window.ui_functions.toggleRightBox(True)
 
-    def edit_facturero(self):
-        self.main_window.ui.rightTabBox.setTabVisible(1, True)
+    def editFacturero(self):
         indexes = self.main_window.ui.table_factureros.selectedIndexes()
         if indexes:
+            self.main_window.ui.rightTabBox.setTabVisible(1, True)
             #Retrive the index row
             index = indexes[0]
-            row = index.row()
+            self.row_facturero_to_edit = index.row()
             # index = self.proxy.mapToSource(indexes[0])
             # row = index.row()
             #Get index of each column of selected row
-            facturero_id = self.model_factureros.index(row, 0)
-            facturero_nombre = self.model_factureros.index(row, 1)
-            facturero_estructura = self.model_factureros.index(row, 2)
-            facturero_partida = self.model_factureros.index(row, 3)
+            facturero_id = self.model_factureros.index(self.row_facturero_to_edit, 0)
+            facturero_nombre = self.model_factureros.index(self.row_facturero_to_edit, 1)
+            facturero_estructura = self.model_factureros.index(self.row_facturero_to_edit, 2)
+            facturero_partida = self.model_factureros.index(self.row_facturero_to_edit, 3)
             #Get data of selected row
             facturero_id = self.model_factureros.data(facturero_id, role=0)
             facturero_nombre = self.model_factureros.data(facturero_nombre, role=0)
             facturero_estructura = self.model_factureros.data(facturero_estructura, role=0)
             facturero_partida = self.model_factureros.data(facturero_partida, role=0)
+            #Set Edit Flag
+            self.nombre_facturero_to_edit = facturero_nombre
             # Open second right menu box
             self.main_window.ui.txt_nombre_facturero.setText(facturero_nombre)
             self.main_window.ui.txt_estructura_facturero.setText(facturero_estructura)
             self.main_window.ui.txt_partida_facturero.setText(facturero_partida)
+            if not self.main_window.ui_functions.isRightBoxToggled():
+                self.main_window.ui_functions.toggleRightBox(True)
+
+    def cleanFactureroForm(self):
+        self.main_window.ui.rightTabBox.setTabVisible(1, False)
+        self.main_window.ui.txt_nombre_facturero.setText("")
+        self.main_window.ui.txt_estructura_facturero.setText("")
+        self.main_window.ui.txt_partida_facturero.setText("")
+        # Set Edit Flag
+        self.nombre_facturero_to_edit = None
+        self.row_facturero_to_edit = None
+        if self.main_window.ui_functions.isRightBoxToggled():
             self.main_window.ui_functions.toggleRightBox(True)
+
+    def deleteFacturero(self):
+        #Get index of the selected items
+        indexes = self.main_window.ui.table_factureros.selectedIndexes()
+        if indexes:
+            #Retrive the index row
+            index = indexes[0]
+            row = index.row()
+            #Get index of first column of selected row
+            agente_idx = self.model_factureros.index(row, 1)
+            #Get data of selected index
+            agente = self.model_factureros.data(agente_idx, role=0)
+            if QMessageBox.question(self.main_window, "Facturero - Eliminar", 
+            f"¿Desea ELIMINAR el Agente: {agente}?",
+            QMessageBox.Yes|QMessageBox.No) == QMessageBox.Yes: 
+                pass
+                # log.info(f'Agente {agente} eliminado')
+                # self.ui.lbl_test.setText(f'Agente {agente} eliminado')
+                return self.model_factureros.removeRow(row), self.model_factureros.select()
+
+# tab_widget = QTabWidget()
+
+# # Obtén el índice de la pestaña que deseas verificar
+# index = 0
+
+# # Verifica si la pestaña en el índice dado es visible
+# if tab_widget.isTabVisible(index):
+#     print("La pestaña es visible")
+# else:
+#     print("La pestaña no es visible")
