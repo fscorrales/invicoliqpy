@@ -1,15 +1,21 @@
 #!/usr/bin/env python3
 """
 Author: Fernando Corrales <fscpython@gmail.com>
-Purpose: 
+Purpose: Manage table factureros functions
 """
 
-from PySide6.QtSql import QSqlTableModel
-from PySide6.QtCore import Qt, QRegularExpression
-from PySide6.QtWidgets import QAbstractItemView, QMessageBox
-from PySide6.QtGui import QRegularExpressionValidator
-from invicoliqpy.utils.sql_utils import SQLUtils
 from dataclasses import dataclass
+
+from PySide6 import QtCore
+from PySide6.QtCore import QRegularExpression, Qt
+from PySide6.QtGui import QAction, QRegularExpressionValidator
+from PySide6.QtSql import QSqlTableModel
+from PySide6.QtWidgets import QAbstractItemView, QMenu, QMessageBox
+
+from invicoliqpy.models.custom_models import CustomMultipleFilter
+from invicoliqpy.utils.editable_headers import EditableHeaderView
+from invicoliqpy.utils.sql_utils import SQLUtils
+
 
 @dataclass
 class Facturero():
@@ -28,14 +34,16 @@ class FacturerosFunctions():
         self.row_facturero_to_edit = None
 
         #Set slot connection
-        # headerview.textChanged.connect(self.on_text_changed)
+        self.headerview_factureros.textChanged.connect(self.onTextChangedFactureros)
         self.main_window.ui.btn_add_facturero.clicked.connect(self.addFacturero)
         self.main_window.ui.btn_edit_facturero.clicked.connect(self.editFacturero)
         self.main_window.ui.btn_delete_facturero.clicked.connect(self.deleteFacturero)
         self.main_window.ui.btn_cancel_facturero.clicked.connect(self.cleanFactureroForm)
         self.main_window.ui.btn_save_facturero.clicked.connect(self.saveFacturero)
-        # self.horizontalHeader = self.ui.table.horizontalHeader()
+        self.horizontal_header_factureros = self.main_window.ui.table_factureros.horizontalHeader()
+        self.horizontal_header_factureros.sectionDoubleClicked.connect(self.onHeaderDoubleClickedFactureros)
         # self.horizontalHeader.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
+        # self.horizontalHeader.customContextMenuRequested.connect(self.on_view_horizontalHeader_sectionClicked)
 
         # Input Mask
         self.main_window.ui.txt_estructura_facturero.setInputMask('99-99-99-99;_')
@@ -62,15 +70,10 @@ class FacturerosFunctions():
             self.enableBtnSaveFacturero
         )
 
-    #     #Set Modal
-    #     self.setModal(True)
-
     def uniqueRazonSocialFacturero(self) -> bool:
         search_value = self.main_window.ui.txt_nombre_facturero.text()
         
         # if editing row
-        # print(self.nombre_facturero_to_edit)
-        # print(search_value)
         if ((self.nombre_facturero_to_edit != None) and 
             (search_value == self.nombre_facturero_to_edit)):
             return True
@@ -85,12 +88,44 @@ class FacturerosFunctions():
     def enableBtnSaveFacturero(self):
         self.main_window.ui.btn_save_facturero.setEnabled(False)
         if self.uniqueRazonSocialFacturero():
-            # print('Unique Facturero')
             if (self.main_window.ui.txt_estructura_facturero.hasAcceptableInput() and 
             self.main_window.ui.txt_partida_facturero.hasAcceptableInput()):
-                # print(f'Estructura: {self.main_window.ui.txt_estructura_facturero.hasAcceptableInput()}')
-                # print(f'Partida: {self.main_window.ui.txt_partida_facturero.hasAcceptableInput()}')
-                self.main_window.ui.btn_save_facturero.setEnabled(True)
+                self.main_window.ui.btn_save_facturero.setEnabled(True)     
+
+    def addFacturero(self):
+        self.main_window.ui.rightTabBox.setTabVisible(1, True)
+        self.main_window.ui.txt_nombre_facturero.setText("")
+        self.main_window.ui.txt_estructura_facturero.setText("")
+        self.main_window.ui.txt_partida_facturero.setText("")
+        if not self.main_window.ui_functions.isRightBoxToggled():
+            self.main_window.ui_functions.toggleRightBox(True)
+
+    def editFacturero(self):
+        indexes = self.main_window.ui.table_factureros.selectedIndexes()
+        if indexes:
+            self.main_window.ui.rightTabBox.setTabVisible(1, True)
+            #Retrive the index row
+            # index = indexes[0]
+            index = self.proxy_factureros.mapToSource(indexes[0])
+            self.row_facturero_to_edit = index.row()
+            #Get index of each column of selected row
+            facturero_id = self.model_factureros.index(self.row_facturero_to_edit, 0)
+            facturero_nombre = self.model_factureros.index(self.row_facturero_to_edit, 1)
+            facturero_estructura = self.model_factureros.index(self.row_facturero_to_edit, 2)
+            facturero_partida = self.model_factureros.index(self.row_facturero_to_edit, 3)
+            #Get data of selected row
+            facturero_id = self.model_factureros.data(facturero_id, role=0)
+            facturero_nombre = self.model_factureros.data(facturero_nombre, role=0)
+            facturero_estructura = self.model_factureros.data(facturero_estructura, role=0)
+            facturero_partida = self.model_factureros.data(facturero_partida, role=0)
+            #Set Edit Flag
+            self.nombre_facturero_to_edit = facturero_nombre
+            # Open second right menu box
+            self.main_window.ui.txt_nombre_facturero.setText(facturero_nombre)
+            self.main_window.ui.txt_estructura_facturero.setText(facturero_estructura)
+            self.main_window.ui.txt_partida_facturero.setText(facturero_partida)
+            if not self.main_window.ui_functions.isRightBoxToggled():
+                self.main_window.ui_functions.toggleRightBox(True)
 
     def saveFacturero(self) -> bool:
         if self.main_window.ui.txt_estructura_facturero.hasAcceptableInput():
@@ -128,65 +163,7 @@ class FacturerosFunctions():
                     self.model_factureros.select()
                     return True
             except:
-                return False
-
-    def setupTableFactureros(self):
-        if self.main_window.db.open_connection():
-            self.model_factureros = QSqlTableModel()
-            self.model_factureros.setTable('factureros')
-            self.model_factureros.setEditStrategy(QSqlTableModel.OnFieldChange)
-            self.model_factureros.select()
-
-            table_view = self.main_window.ui.table_factureros
-            table_view.setModel(self.model_factureros)
-
-            # Opcional: configurar el comportamiento de la vista
-            #Set up table properties
-            table_view.setEditTriggers(QAbstractItemView.NoEditTriggers)
-            table_view.verticalHeader().setVisible(False)
-            table_view.hideColumn(0)
-            table_view.resizeColumnsToContents()
-            table_view.setSortingEnabled(True)
-            table_view.sortByColumn(1, Qt.AscendingOrder)
-            #table_view.setGridStyle(Qt.SolidLine)
-            #table_view.setStyleSheet("QTableView { gridline-width: 2px; gridline-color: black; }")        
-
-    def addFacturero(self):
-        # Open second window
-        self.main_window.ui.rightTabBox.setTabVisible(1, True)
-        self.main_window.ui.txt_nombre_facturero.setText("")
-        self.main_window.ui.txt_estructura_facturero.setText("")
-        self.main_window.ui.txt_partida_facturero.setText("")
-        if not self.main_window.ui_functions.isRightBoxToggled():
-            self.main_window.ui_functions.toggleRightBox(True)
-
-    def editFacturero(self):
-        indexes = self.main_window.ui.table_factureros.selectedIndexes()
-        if indexes:
-            self.main_window.ui.rightTabBox.setTabVisible(1, True)
-            #Retrive the index row
-            index = indexes[0]
-            self.row_facturero_to_edit = index.row()
-            # index = self.proxy.mapToSource(indexes[0])
-            # row = index.row()
-            #Get index of each column of selected row
-            facturero_id = self.model_factureros.index(self.row_facturero_to_edit, 0)
-            facturero_nombre = self.model_factureros.index(self.row_facturero_to_edit, 1)
-            facturero_estructura = self.model_factureros.index(self.row_facturero_to_edit, 2)
-            facturero_partida = self.model_factureros.index(self.row_facturero_to_edit, 3)
-            #Get data of selected row
-            facturero_id = self.model_factureros.data(facturero_id, role=0)
-            facturero_nombre = self.model_factureros.data(facturero_nombre, role=0)
-            facturero_estructura = self.model_factureros.data(facturero_estructura, role=0)
-            facturero_partida = self.model_factureros.data(facturero_partida, role=0)
-            #Set Edit Flag
-            self.nombre_facturero_to_edit = facturero_nombre
-            # Open second right menu box
-            self.main_window.ui.txt_nombre_facturero.setText(facturero_nombre)
-            self.main_window.ui.txt_estructura_facturero.setText(facturero_estructura)
-            self.main_window.ui.txt_partida_facturero.setText(facturero_partida)
-            if not self.main_window.ui_functions.isRightBoxToggled():
-                self.main_window.ui_functions.toggleRightBox(True)
+                return False 
 
     def cleanFactureroForm(self):
         self.main_window.ui.rightTabBox.setTabVisible(1, False)
@@ -207,16 +184,125 @@ class FacturerosFunctions():
             index = indexes[0]
             row = index.row()
             #Get index of first column of selected row
-            agente_idx = self.model_factureros.index(row, 1)
+            # agente_idx = self.model_factureros.index(row, 1)
+            agente_idx = self.proxy_factureros.index(row, 1)
             #Get data of selected index
-            agente = self.model_factureros.data(agente_idx, role=0)
+            agente = self.proxy_factureros.data(agente_idx, role=0)
             if QMessageBox.question(self.main_window, "Facturero - Eliminar", 
             f"¿Desea ELIMINAR el Agente: {agente}?",
             QMessageBox.Yes|QMessageBox.No) == QMessageBox.Yes: 
                 pass
                 # log.info(f'Agente {agente} eliminado')
                 # self.ui.lbl_test.setText(f'Agente {agente} eliminado')
-                return self.model_factureros.removeRow(row), self.model_factureros.select()
+                return self.proxy_factureros.removeRow(row), self.model_factureros.select()
+
+    def setupTableFactureros(self):
+        if self.main_window.db.open_connection():
+            self.model_factureros = QSqlTableModel()
+            self.model_factureros.setTable('factureros')
+            self.model_factureros.setHeaderData(0, QtCore.Qt.Horizontal, "ID")
+            self.model_factureros.setHeaderData(1, QtCore.Qt.Horizontal, "Nombre Completo")
+            self.model_factureros.setHeaderData(2, QtCore.Qt.Horizontal, "Estructura")
+            self.model_factureros.setHeaderData(3, QtCore.Qt.Horizontal, "Partida")
+            # self.model_factureros.setEditStrategy(QSqlTableModel.OnFieldChange)
+            self.model_factureros.select()
+
+            table_view = self.main_window.ui.table_factureros
+            # table_view.setModel(self.model_factureros)
+
+            # # Initialize editable headers
+            self.headerview_factureros = EditableHeaderView(table_view)
+            table_view.setHorizontalHeader(self.headerview_factureros)
+
+            # #Initialize proxy model
+            self.proxy_factureros = CustomMultipleFilter(self.main_window)
+            self.proxy_factureros.setSourceModel(self.model_factureros)
+
+            #Connect view with model
+            table_view.setModel(self.proxy_factureros)
+
+            #Set up table properties
+            table_view.horizontalHeader().setVisible(True)
+            table_view.setEditTriggers(QAbstractItemView.NoEditTriggers)
+            table_view.verticalHeader().setVisible(False)
+            table_view.hideColumn(0)
+            table_view.resizeColumnsToContents()
+            table_view.setSortingEnabled(True)
+            table_view.sortByColumn(1, QtCore.Qt.AscendingOrder)
+            # table_view.setGridStyle(Qt.SolidLine)
+            # table_view.setStyleSheet("QTableView { gridline-width: 2px; gridline-color: black; }")  
+
+            # allow drag to rearrange columns
+            # self.table_factureros.horizontalHeader().setMovable(True)
+
+            #self.setCentralWidget(self.table_factureros)
+
+            #Set editable (filter) headers
+            self.headerview_factureros.setEditable(1, True)
+            # headerview.setEditable(2, True)
+            # headerview.setEditable(3, True)
+
+    @QtCore.Slot(int, str)
+    def onTextChangedFactureros(self, col, text):
+        self.proxy_factureros.setFilterKeyColumn(col)
+        # self.proxy.setFilterWildcard("*{}*".format(text.upper()) if text else "")
+        self.proxy_factureros.setFilter(text, self.proxy_factureros.filterKeyColumn())
+
+    @QtCore.Slot(int)
+    def onHeaderDoubleClickedFactureros(self, logicalIndex):
+
+        self.logicalIndex   = logicalIndex
+        self.menuValues     = QMenu(self.main_window)
+        self.signalMapper   = QtCore.QSignalMapper(self.main_window)
+        # self.comboBox.blockSignals(True)
+        # self.comboBox.setCurrentIndex(self.logicalIndex)
+        # self.comboBox.blockSignals(True)
+
+        if self.logicalIndex != 1:
+            # valuesUnique = self.model._df.iloc[:, self.logicalIndex].unique()
+            data = []
+            for row in range(self.model_factureros.rowCount()):
+                index = self.model_factureros.index(row, self.logicalIndex)
+                # We suppose data are strings
+                data.append(str(self.model_factureros.data(index)))
+
+            valuesUnique = list(set(data))
+
+            actionAll = QAction("All", self.main_window)
+            actionAll.triggered.connect(self.onActionAllTriggeredFactureros)
+            self.menuValues.addAction(actionAll)
+            self.menuValues.addSeparator()
+            for actionNumber, actionName in enumerate(sorted(list(set(valuesUnique)))):
+                action = QAction(actionName, self.main_window)
+                self.signalMapper.setMapping(action, actionNumber)
+                action.triggered.connect(self.signalMapper.map)
+                self.menuValues.addAction(action)
+            self.signalMapper.mappedInt.connect(self.onSignalMapperMappedFactureros)
+            headerPos = self.main_window.ui.table_factureros.mapToGlobal(self.horizontal_header_factureros.pos())
+            posY = headerPos.y() + self.horizontal_header_factureros.height()
+            posX = headerPos.x() + self.horizontal_header_factureros.sectionPosition(self.logicalIndex)
+
+            self.menuValues.exec_(QtCore.QPoint(posX, posY))
+
+    @QtCore.Slot()
+    def onActionAllTriggeredFactureros(self):
+        filterColumn = self.logicalIndex
+        self.proxy_factureros.setFilter("", filterColumn)
+
+    @QtCore.Slot(int)
+    def onSignalMapperMappedFactureros(self, i):
+        stringAction = self.signalMapper.mapping(i).text()
+        print(stringAction)
+        filterColumn = self.logicalIndex
+        self.proxy_factureros.setFilter(stringAction, filterColumn)
+
+    @QtCore.Slot(str)
+    def onLineEditTextChangedFactureros(self, text):
+        self.proxy_factureros.setFilter(text, self.proxy_factureros.filterKeyColumn())
+
+    @QtCore.Slot(int)
+    def onComboBoxCurrentIndexChangedFactureros(self, index):
+        self.proxy_factureros.setFilterKeyColumn(index)
 
 # tab_widget = QTabWidget()
 
