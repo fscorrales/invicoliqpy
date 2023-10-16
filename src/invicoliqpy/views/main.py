@@ -77,8 +77,8 @@ class MainWindow(QMainWindow):
         # LEFT MENUS
         widgets.btn_home.clicked.connect(self.buttonClick)
         widgets.btn_widgets.clicked.connect(self.buttonClick)
-        widgets.btn_new.clicked.connect(self.buttonClick)
-        widgets.btn_save.clicked.connect(self.buttonClick)
+        widgets.btn_factureros.clicked.connect(self.buttonClick)
+        widgets.btn_siif.clicked.connect(self.buttonClick)
 
 
         # SHOW APP
@@ -131,14 +131,17 @@ class MainWindow(QMainWindow):
             self.ui_functions.resetStyle(btnName)
             btn.setStyleSheet(self.ui_functions.selectMenu(btn.styleSheet()))
 
-        # SHOW NEW PAGE
-        if btnName == "btn_new":
-            widgets.stackedWidget.setCurrentWidget(widgets.new_page) # SET PAGE
+        # SHOW FACTUREROS
+        if btnName == "btn_factureros":
+            widgets.stackedWidget.setCurrentWidget(widgets.factureros) # SET PAGE
             self.ui_functions.resetStyle(btnName)
             btn.setStyleSheet(self.ui_functions.selectMenu(btn.styleSheet()))
 
-        if btnName == "btn_save":
-            print("Save BTN clicked!")
+        # SHOW SIIF
+        if btnName == "btn_siif":
+            widgets.stackedWidget.setCurrentWidget(widgets.siif) # SET PAGE
+            self.ui_functions.resetStyle(btnName)
+            btn.setStyleSheet(self.ui_functions.selectMenu(btn.styleSheet()))
 
         # PRINT BTN NAME
         print(f'Button "{btnName}" pressed!')

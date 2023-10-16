@@ -25,6 +25,7 @@
     <font>
      <family>Segoe UI</family>
      <pointsize>10</pointsize>
+     <weight>50</weight>
      <italic>false</italic>
      <bold>false</bold>
     </font>
@@ -677,6 +678,7 @@ Button */
               <font>
                <family>Segoe UI Semibold</family>
                <pointsize>12</pointsize>
+               <weight>8</weight>
                <italic>false</italic>
                <bold>false</bold>
               </font>
@@ -707,6 +709,7 @@ Button */
               <font>
                <family>Segoe UI</family>
                <pointsize>8</pointsize>
+               <weight>50</weight>
                <italic>false</italic>
                <bold>false</bold>
               </font>
@@ -792,6 +795,7 @@ Button */
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>10</pointsize>
+                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
@@ -855,6 +859,7 @@ Button */
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>10</pointsize>
+                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
@@ -891,6 +896,7 @@ Button */
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>10</pointsize>
+                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
@@ -910,7 +916,7 @@ Button */
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="btn_new">
+                 <widget class="QPushButton" name="btn_factureros">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -927,6 +933,7 @@ Button */
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>10</pointsize>
+                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
@@ -938,15 +945,15 @@ Button */
                    <enum>Qt::LeftToRight</enum>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">background-image: url(:/icons/images/icons/cil-file.png);</string>
+                   <string notr="true">background-image: url(:/icons/images/icons/cil-people.png);</string>
                   </property>
                   <property name="text">
-                   <string>New</string>
+                   <string>Factureros</string>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="btn_save">
+                 <widget class="QPushButton" name="btn_siif">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -963,6 +970,7 @@ Button */
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>10</pointsize>
+                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
@@ -974,10 +982,10 @@ Button */
                    <enum>Qt::LeftToRight</enum>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">background-image: url(:/icons/images/icons/cil-save.png)</string>
+                   <string notr="true">background-image: url(:/icons/images/icons/cil-terminal.png);</string>
                   </property>
                   <property name="text">
-                   <string>Save</string>
+                   <string>SIIF</string>
                   </property>
                  </widget>
                 </item>
@@ -999,6 +1007,7 @@ Button */
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>10</pointsize>
+                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
@@ -1062,6 +1071,7 @@ Button */
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>10</pointsize>
+                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
@@ -1316,6 +1326,7 @@ Button */
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>10</pointsize>
+                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
@@ -1352,6 +1363,7 @@ Button */
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>10</pointsize>
+                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
@@ -1388,6 +1400,7 @@ Button */
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>10</pointsize>
+                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
@@ -1437,11 +1450,8 @@ Button */
                   </property>
                   <property name="html">
                    <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
-&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-hr { height: 1px; border-width: 0; }
-li.unchecked::marker { content: &quot;\2610&quot;; }
-li.checked::marker { content: &quot;\2612&quot;; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; color:#ff79c6;&quot;&gt;PyDracula&lt;/span&gt;&lt;/p&gt;
 &lt;p align=&quot;center&quot; style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; color:#ffffff;&quot;&gt;An interface created using Python and PySide (support for PyQt), and with colors based on the Dracula theme created by Zeno Rocha.&lt;/span&gt;&lt;/p&gt;
@@ -1581,6 +1591,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>10</pointsize>
+                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>
@@ -1714,6 +1725,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>10</pointsize>
+                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                     <stylestrategy>PreferDefault</stylestrategy>
@@ -1862,7 +1874,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>2</number>
+                      <number>3</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -1972,6 +1984,7 @@ background-repeat: no-repeat;</string>
                                    <font>
                                     <family>Segoe UI</family>
                                     <pointsize>10</pointsize>
+                                    <weight>50</weight>
                                     <italic>false</italic>
                                     <bold>false</bold>
                                    </font>
@@ -2032,6 +2045,7 @@ background-repeat: no-repeat;</string>
                                      <font>
                                       <family>Segoe UI</family>
                                       <pointsize>10</pointsize>
+                                      <weight>50</weight>
                                       <italic>false</italic>
                                       <bold>false</bold>
                                      </font>
@@ -2166,7 +2180,7 @@ background-repeat: no-repeat;</string>
                                 <rect>
                                  <x>0</x>
                                  <y>0</y>
-                                 <width>218</width>
+                                 <width>274</width>
                                  <height>218</height>
                                 </rect>
                                </property>
@@ -2203,6 +2217,7 @@ background-repeat: no-repeat;</string>
                                <font>
                                 <family>Segoe UI</family>
                                 <pointsize>10</pointsize>
+                                <weight>50</weight>
                                 <italic>false</italic>
                                 <bold>false</bold>
                                </font>
@@ -2388,7 +2403,7 @@ background-repeat: no-repeat;</string>
                                </colorrole>
                                <colorrole role="PlaceholderText">
                                 <brush brushstyle="SolidPattern">
-                                 <color alpha="128">
+                                 <color alpha="255">
                                   <red>221</red>
                                   <green>221</green>
                                   <blue>221</blue>
@@ -2453,7 +2468,7 @@ background-repeat: no-repeat;</string>
                                </colorrole>
                                <colorrole role="PlaceholderText">
                                 <brush brushstyle="SolidPattern">
-                                 <color alpha="128">
+                                 <color alpha="255">
                                   <red>221</red>
                                   <green>221</green>
                                   <blue>221</blue>
@@ -2518,7 +2533,7 @@ background-repeat: no-repeat;</string>
                                </colorrole>
                                <colorrole role="PlaceholderText">
                                 <brush brushstyle="SolidPattern">
-                                 <color alpha="128">
+                                 <color alpha="255">
                                   <red>221</red>
                                   <green>221</green>
                                   <blue>221</blue>
@@ -2711,7 +2726,7 @@ background-repeat: no-repeat;</string>
                        </item>
                       </layout>
                      </widget>
-                     <widget class="QWidget" name="new_page">
+                     <widget class="QWidget" name="factureros">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                         <horstretch>0</horstretch>
@@ -2780,6 +2795,7 @@ background-repeat: no-repeat;</string>
                               <font>
                                <family>Segoe UI</family>
                                <pointsize>10</pointsize>
+                               <weight>50</weight>
                                <italic>false</italic>
                                <bold>false</bold>
                               </font>
@@ -2811,6 +2827,7 @@ background-repeat: no-repeat;</string>
                               <font>
                                <family>Segoe UI</family>
                                <pointsize>10</pointsize>
+                               <weight>50</weight>
                                <italic>false</italic>
                                <bold>false</bold>
                               </font>
@@ -2842,6 +2859,7 @@ background-repeat: no-repeat;</string>
                               <font>
                                <family>Segoe UI</family>
                                <pointsize>10</pointsize>
+                               <weight>50</weight>
                                <italic>false</italic>
                                <bold>false</bold>
                               </font>
@@ -2867,6 +2885,58 @@ background-repeat: no-repeat;</string>
                        </item>
                       </layout>
                      </widget>
+                     <widget class="QWidget" name="siif">
+                      <widget class="QWidget" name="gridLayoutWidget">
+                       <property name="geometry">
+                        <rect>
+                         <x>-1</x>
+                         <y>0</y>
+                         <width>1301</width>
+                         <height>601</height>
+                        </rect>
+                       </property>
+                       <layout class="QGridLayout" name="gridLayout_3">
+                        <item row="0" column="0">
+                         <widget class="QTabWidget" name="tabWidget">
+                          <property name="currentIndex">
+                           <number>0</number>
+                          </property>
+                          <widget class="QWidget" name="tab_resumen_siif">
+                           <attribute name="title">
+                            <string>Resumen</string>
+                           </attribute>
+                           <widget class="QWidget" name="gridLayoutWidget_2">
+                            <property name="geometry">
+                             <rect>
+                              <x>0</x>
+                              <y>0</y>
+                              <width>1291</width>
+                              <height>561</height>
+                             </rect>
+                            </property>
+                            <layout class="QGridLayout" name="gridLayout_4">
+                             <item row="0" column="1">
+                              <widget class="QTableView" name="tableView_2"/>
+                             </item>
+                             <item row="1" column="1">
+                              <widget class="QTableView" name="tableView_3"/>
+                             </item>
+                             <item row="0" column="0" rowspan="2">
+                              <widget class="QTableView" name="tableView"/>
+                             </item>
+                            </layout>
+                           </widget>
+                          </widget>
+                          <widget class="QWidget" name="tab_detalle_siif">
+                           <attribute name="title">
+                            <string>Detalle</string>
+                           </attribute>
+                          </widget>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </widget>
                     </widget>
                    </item>
                   </layout>
@@ -2876,7 +2946,7 @@ background-repeat: no-repeat;</string>
                  <widget class="QFrame" name="extraRightBox">
                   <property name="minimumSize">
                    <size>
-                    <width>340</width>
+                    <width>0</width>
                     <height>0</height>
                    </size>
                   </property>
@@ -2976,7 +3046,7 @@ background-repeat: no-repeat;</string>
 border: none;</string>
                         </property>
                         <property name="currentIndex">
-                         <number>1</number>
+                         <number>0</number>
                         </property>
                         <property name="usesScrollButtons">
                          <bool>true</bool>
@@ -3037,6 +3107,7 @@ border: none;</string>
                               <font>
                                <family>Segoe UI</family>
                                <pointsize>10</pointsize>
+                               <weight>50</weight>
                                <italic>false</italic>
                                <bold>false</bold>
                               </font>
@@ -3073,6 +3144,7 @@ border: none;</string>
                               <font>
                                <family>Segoe UI</family>
                                <pointsize>10</pointsize>
+                               <weight>50</weight>
                                <italic>false</italic>
                                <bold>false</bold>
                               </font>
@@ -3109,6 +3181,7 @@ border: none;</string>
                               <font>
                                <family>Segoe UI</family>
                                <pointsize>10</pointsize>
+                               <weight>50</weight>
                                <italic>false</italic>
                                <bold>false</bold>
                               </font>
@@ -3302,6 +3375,7 @@ border: none;</string>
                            <font>
                             <family>Segoe UI</family>
                             <pointsize>10</pointsize>
+                            <weight>50</weight>
                             <italic>false</italic>
                             <bold>false</bold>
                            </font>
@@ -3339,6 +3413,7 @@ border: none;</string>
                            <font>
                             <family>Segoe UI</family>
                             <pointsize>10</pointsize>
+                            <weight>50</weight>
                             <italic>false</italic>
                             <bold>false</bold>
                            </font>
@@ -3417,6 +3492,7 @@ border: none;</string>
                    <font>
                     <family>Segoe UI</family>
                     <pointsize>-1</pointsize>
+                    <weight>50</weight>
                     <italic>false</italic>
                     <bold>false</bold>
                    </font>

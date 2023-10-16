@@ -686,29 +686,29 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_8.addWidget(self.btn_widgets)
 
-        self.btn_new = QPushButton(self.topMenu)
-        self.btn_new.setObjectName(u"btn_new")
-        sizePolicy.setHeightForWidth(self.btn_new.sizePolicy().hasHeightForWidth())
-        self.btn_new.setSizePolicy(sizePolicy)
-        self.btn_new.setMinimumSize(QSize(0, 45))
-        self.btn_new.setFont(font)
-        self.btn_new.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_new.setLayoutDirection(Qt.LeftToRight)
-        self.btn_new.setStyleSheet(u"background-image: url(:/icons/images/icons/cil-file.png);")
+        self.btn_factureros = QPushButton(self.topMenu)
+        self.btn_factureros.setObjectName(u"btn_factureros")
+        sizePolicy.setHeightForWidth(self.btn_factureros.sizePolicy().hasHeightForWidth())
+        self.btn_factureros.setSizePolicy(sizePolicy)
+        self.btn_factureros.setMinimumSize(QSize(0, 45))
+        self.btn_factureros.setFont(font)
+        self.btn_factureros.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_factureros.setLayoutDirection(Qt.LeftToRight)
+        self.btn_factureros.setStyleSheet(u"background-image: url(:/icons/images/icons/cil-people.png);")
 
-        self.verticalLayout_8.addWidget(self.btn_new)
+        self.verticalLayout_8.addWidget(self.btn_factureros)
 
-        self.btn_save = QPushButton(self.topMenu)
-        self.btn_save.setObjectName(u"btn_save")
-        sizePolicy.setHeightForWidth(self.btn_save.sizePolicy().hasHeightForWidth())
-        self.btn_save.setSizePolicy(sizePolicy)
-        self.btn_save.setMinimumSize(QSize(0, 45))
-        self.btn_save.setFont(font)
-        self.btn_save.setCursor(QCursor(Qt.PointingHandCursor))
-        self.btn_save.setLayoutDirection(Qt.LeftToRight)
-        self.btn_save.setStyleSheet(u"background-image: url(:/icons/images/icons/cil-save.png)")
+        self.btn_siif = QPushButton(self.topMenu)
+        self.btn_siif.setObjectName(u"btn_siif")
+        sizePolicy.setHeightForWidth(self.btn_siif.sizePolicy().hasHeightForWidth())
+        self.btn_siif.setSizePolicy(sizePolicy)
+        self.btn_siif.setMinimumSize(QSize(0, 45))
+        self.btn_siif.setFont(font)
+        self.btn_siif.setCursor(QCursor(Qt.PointingHandCursor))
+        self.btn_siif.setLayoutDirection(Qt.LeftToRight)
+        self.btn_siif.setStyleSheet(u"background-image: url(:/icons/images/icons/cil-terminal.png);")
 
-        self.verticalLayout_8.addWidget(self.btn_save)
+        self.verticalLayout_8.addWidget(self.btn_siif)
 
         self.btn_exit = QPushButton(self.topMenu)
         self.btn_exit.setObjectName(u"btn_exit")
@@ -1188,7 +1188,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 218, 218))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 274, 218))
         self.scrollAreaWidgetContents.setStyleSheet(u" QScrollBar:vertical {\n"
 "	border: none;\n"
 "    background: rgb(52, 59, 72);\n"
@@ -1339,32 +1339,30 @@ class Ui_MainWindow(object):
         brush2.setStyle(Qt.NoBrush)
         palette.setBrush(QPalette.Active, QPalette.Base, brush2)
         palette.setBrush(QPalette.Active, QPalette.Window, brush1)
-        brush3 = QBrush(QColor(221, 221, 221, 128))
-        brush3.setStyle(Qt.SolidPattern)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.Active, QPalette.PlaceholderText, brush3)
+        palette.setBrush(QPalette.Active, QPalette.PlaceholderText, brush)
 #endif
         palette.setBrush(QPalette.Inactive, QPalette.WindowText, brush)
         palette.setBrush(QPalette.Inactive, QPalette.Button, brush1)
         palette.setBrush(QPalette.Inactive, QPalette.Text, brush)
         palette.setBrush(QPalette.Inactive, QPalette.ButtonText, brush)
-        brush4 = QBrush(QColor(0, 0, 0, 255))
-        brush4.setStyle(Qt.NoBrush)
-        palette.setBrush(QPalette.Inactive, QPalette.Base, brush4)
+        brush3 = QBrush(QColor(0, 0, 0, 255))
+        brush3.setStyle(Qt.NoBrush)
+        palette.setBrush(QPalette.Inactive, QPalette.Base, brush3)
         palette.setBrush(QPalette.Inactive, QPalette.Window, brush1)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush3)
+        palette.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush)
 #endif
         palette.setBrush(QPalette.Disabled, QPalette.WindowText, brush)
         palette.setBrush(QPalette.Disabled, QPalette.Button, brush1)
         palette.setBrush(QPalette.Disabled, QPalette.Text, brush)
         palette.setBrush(QPalette.Disabled, QPalette.ButtonText, brush)
-        brush5 = QBrush(QColor(0, 0, 0, 255))
-        brush5.setStyle(Qt.NoBrush)
-        palette.setBrush(QPalette.Disabled, QPalette.Base, brush5)
+        brush4 = QBrush(QColor(0, 0, 0, 255))
+        brush4.setStyle(Qt.NoBrush)
+        palette.setBrush(QPalette.Disabled, QPalette.Base, brush4)
         palette.setBrush(QPalette.Disabled, QPalette.Window, brush1)
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush3)
+        palette.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush)
 #endif
         self.tableWidget.setPalette(palette)
         self.tableWidget.setFrameShape(QFrame.NoFrame)
@@ -1391,16 +1389,16 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.row_3)
 
         self.stackedWidget.addWidget(self.widgets)
-        self.new_page = QWidget()
-        self.new_page.setObjectName(u"new_page")
+        self.factureros = QWidget()
+        self.factureros.setObjectName(u"factureros")
         sizePolicy4 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
         sizePolicy4.setHorizontalStretch(0)
         sizePolicy4.setVerticalStretch(0)
-        sizePolicy4.setHeightForWidth(self.new_page.sizePolicy().hasHeightForWidth())
-        self.new_page.setSizePolicy(sizePolicy4)
-        self.verticalLayout_20 = QVBoxLayout(self.new_page)
+        sizePolicy4.setHeightForWidth(self.factureros.sizePolicy().hasHeightForWidth())
+        self.factureros.setSizePolicy(sizePolicy4)
+        self.verticalLayout_20 = QVBoxLayout(self.factureros)
         self.verticalLayout_20.setObjectName(u"verticalLayout_20")
-        self.groupBox = QGroupBox(self.new_page)
+        self.groupBox = QGroupBox(self.factureros)
         self.groupBox.setObjectName(u"groupBox")
         sizePolicy5 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
         sizePolicy5.setHorizontalStretch(0)
@@ -1460,7 +1458,48 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_20.addWidget(self.groupBox)
 
-        self.stackedWidget.addWidget(self.new_page)
+        self.stackedWidget.addWidget(self.factureros)
+        self.siif = QWidget()
+        self.siif.setObjectName(u"siif")
+        self.gridLayoutWidget = QWidget(self.siif)
+        self.gridLayoutWidget.setObjectName(u"gridLayoutWidget")
+        self.gridLayoutWidget.setGeometry(QRect(-1, 0, 1301, 601))
+        self.gridLayout_3 = QGridLayout(self.gridLayoutWidget)
+        self.gridLayout_3.setObjectName(u"gridLayout_3")
+        self.gridLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.tabWidget = QTabWidget(self.gridLayoutWidget)
+        self.tabWidget.setObjectName(u"tabWidget")
+        self.tab_resumen_siif = QWidget()
+        self.tab_resumen_siif.setObjectName(u"tab_resumen_siif")
+        self.gridLayoutWidget_2 = QWidget(self.tab_resumen_siif)
+        self.gridLayoutWidget_2.setObjectName(u"gridLayoutWidget_2")
+        self.gridLayoutWidget_2.setGeometry(QRect(0, 0, 1291, 561))
+        self.gridLayout_4 = QGridLayout(self.gridLayoutWidget_2)
+        self.gridLayout_4.setObjectName(u"gridLayout_4")
+        self.gridLayout_4.setContentsMargins(0, 0, 0, 0)
+        self.tableView_2 = QTableView(self.gridLayoutWidget_2)
+        self.tableView_2.setObjectName(u"tableView_2")
+
+        self.gridLayout_4.addWidget(self.tableView_2, 0, 1, 1, 1)
+
+        self.tableView_3 = QTableView(self.gridLayoutWidget_2)
+        self.tableView_3.setObjectName(u"tableView_3")
+
+        self.gridLayout_4.addWidget(self.tableView_3, 1, 1, 1, 1)
+
+        self.tableView = QTableView(self.gridLayoutWidget_2)
+        self.tableView.setObjectName(u"tableView")
+
+        self.gridLayout_4.addWidget(self.tableView, 0, 0, 2, 1)
+
+        self.tabWidget.addTab(self.tab_resumen_siif, "")
+        self.tab_detalle_siif = QWidget()
+        self.tab_detalle_siif.setObjectName(u"tab_detalle_siif")
+        self.tabWidget.addTab(self.tab_detalle_siif, "")
+
+        self.gridLayout_3.addWidget(self.tabWidget, 0, 0, 1, 1)
+
+        self.stackedWidget.addWidget(self.siif)
 
         self.verticalLayout_15.addWidget(self.stackedWidget)
 
@@ -1469,7 +1508,7 @@ class Ui_MainWindow(object):
 
         self.extraRightBox = QFrame(self.content)
         self.extraRightBox.setObjectName(u"extraRightBox")
-        self.extraRightBox.setMinimumSize(QSize(340, 0))
+        self.extraRightBox.setMinimumSize(QSize(0, 0))
         self.extraRightBox.setMaximumSize(QSize(0, 16777215))
         self.extraRightBox.setFrameShape(QFrame.NoFrame)
         self.extraRightBox.setFrameShadow(QFrame.Raised)
@@ -1698,8 +1737,9 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(2)
-        self.rightTabBox.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(3)
+        self.tabWidget.setCurrentIndex(0)
+        self.rightTabBox.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1712,8 +1752,8 @@ class Ui_MainWindow(object):
         self.toggleButton.setText(QCoreApplication.translate("MainWindow", u"Hide", None))
         self.btn_home.setText(QCoreApplication.translate("MainWindow", u"Home", None))
         self.btn_widgets.setText(QCoreApplication.translate("MainWindow", u"Widgets", None))
-        self.btn_new.setText(QCoreApplication.translate("MainWindow", u"New", None))
-        self.btn_save.setText(QCoreApplication.translate("MainWindow", u"Save", None))
+        self.btn_factureros.setText(QCoreApplication.translate("MainWindow", u"Factureros", None))
+        self.btn_siif.setText(QCoreApplication.translate("MainWindow", u"SIIF", None))
         self.btn_exit.setText(QCoreApplication.translate("MainWindow", u"Exit", None))
         self.toggleLeftBox.setText(QCoreApplication.translate("MainWindow", u"Left Box", None))
         self.extraLabel.setText(QCoreApplication.translate("MainWindow", u"Left Box", None))
@@ -1725,22 +1765,19 @@ class Ui_MainWindow(object):
         self.btn_adjustments.setText(QCoreApplication.translate("MainWindow", u"Adjustments", None))
         self.btn_more.setText(QCoreApplication.translate("MainWindow", u"More", None))
         self.textEdit.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"hr { height: 1px; border-width: 0; }\n"
-"li.unchecked::marker { content: \"\\2610\"; }\n"
-"li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:'Segoe UI'; font-size:10pt; font-weight:400; font-style:normal;\">\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; color:#ff79c6;\">PyDracula</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">An interface created using Python and PySide (support for PyQt), and with colors based on the Dracula theme created by Zen"
-                        "o Rocha.</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">MIT License</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">An interface created using Python and PySide (support for PyQt), and with colors based on the Dracula theme created by Zeno Rocha.</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><"
+                        "span style=\" color:#ffffff;\">MIT License</span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#bd93f9;\">Created by: Wanderson M. Pimenta</span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; color:#ff79c6;\">Convert UI</span></p>\n"
 "<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#ffffff;\">pyside6-uic main.ui &gt; ui_main.py</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-in"
-                        "dent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; color:#ff79c6;\">Convert QRC</span></p>\n"
-"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#ffffff;\">pyside6-rcc resources.qrc -o resources_rc.py</span></p></body></html>", None))
+"<p align=\"center\" style=\" margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:600; color:#ff79c6;\">Convert QRC</span></p>\n"
+"<p align=\"center\" style=\" margin-top:12px; "
+                        "margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt; color:#ffffff;\">pyside6-rcc resources.qrc -o resources_rc.py</span></p></body></html>", None))
         self.titleRightInfo.setText(QCoreApplication.translate("MainWindow", u"PyDracula APP - Theme with colors based on Dracula for Python.", None))
 #if QT_CONFIG(tooltip)
         self.settingsTopBtn.setToolTip(QCoreApplication.translate("MainWindow", u"Settings", None))
@@ -1828,6 +1865,8 @@ class Ui_MainWindow(object):
         self.btn_add_facturero.setText(QCoreApplication.translate("MainWindow", u"Agregar", None))
         self.btn_edit_facturero.setText(QCoreApplication.translate("MainWindow", u"Editar", None))
         self.btn_delete_facturero.setText(QCoreApplication.translate("MainWindow", u"Eliminar", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_resumen_siif), QCoreApplication.translate("MainWindow", u"Resumen", None))
+        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_detalle_siif), QCoreApplication.translate("MainWindow", u"Detalle", None))
         self.btn_message.setText(QCoreApplication.translate("MainWindow", u"Message", None))
         self.btn_print.setText(QCoreApplication.translate("MainWindow", u"Print", None))
         self.btn_logout.setText(QCoreApplication.translate("MainWindow", u"Logout", None))
