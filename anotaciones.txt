@@ -26,3 +26,19 @@ QMessageBox QLabel {
 
 /* ... Agrega más estilos personalizados según sea necesario ... */
 
+
+Backgrounds Dark Theme
+ - rgb (23, 26, 30)         press
+ - rgb (33, 37, 43)
+ - rgba(33, 37, 43, 180)
+ - rgb (37, 41, 48)
+ - rgb (40, 44, 52)
+ - rgb (44, 49, 57)         hover
+ - rgb (44, 49, 58)
+ - rgb (189, 147, 249)
+ - rgba(255, 255, 255, 0)
+ 
+
+
+color: rgb(221, 221, 221)
+

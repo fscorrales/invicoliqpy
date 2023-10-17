@@ -2180,7 +2180,7 @@ background-repeat: no-repeat;</string>
                                 <rect>
                                  <x>0</x>
                                  <y>0</y>
-                                 <width>274</width>
+                                 <width>218</width>
                                  <height>218</height>
                                 </rect>
                                </property>
@@ -2898,6 +2898,10 @@ background-repeat: no-repeat;</string>
                        <layout class="QGridLayout" name="gridLayout_3">
                         <item row="0" column="0">
                          <widget class="QTabWidget" name="tabWidget">
+                          <property name="styleSheet">
+                           <string notr="true">background-color: rgb(40, 44, 52);
+border: none;</string>
+                          </property>
                           <property name="currentIndex">
                            <number>0</number>
                           </property>
@@ -2905,24 +2909,163 @@ background-repeat: no-repeat;</string>
                            <attribute name="title">
                             <string>Resumen</string>
                            </attribute>
-                           <widget class="QWidget" name="gridLayoutWidget_2">
+                           <widget class="QGroupBox" name="groupBox_2">
+                            <property name="geometry">
+                             <rect>
+                              <x>-1</x>
+                              <y>59</y>
+                              <width>641</width>
+                              <height>501</height>
+                             </rect>
+                            </property>
+                            <property name="autoFillBackground">
+                             <bool>false</bool>
+                            </property>
+                            <property name="title">
+                             <string>Comprobantes SIIF</string>
+                            </property>
+                            <widget class="QTableView" name="table_comprobantes_siif">
+                             <property name="geometry">
+                              <rect>
+                               <x>15</x>
+                               <y>31</y>
+                               <width>611</width>
+                               <height>461</height>
+                              </rect>
+                             </property>
+                            </widget>
+                           </widget>
+                           <widget class="QGroupBox" name="groupBox_3">
+                            <property name="geometry">
+                             <rect>
+                              <x>640</x>
+                              <y>0</y>
+                              <width>641</width>
+                              <height>271</height>
+                             </rect>
+                            </property>
+                            <property name="title">
+                             <string>Imputación</string>
+                            </property>
+                           </widget>
+                           <widget class="QGroupBox" name="groupBox_4">
+                            <property name="geometry">
+                             <rect>
+                              <x>640</x>
+                              <y>290</y>
+                              <width>641</width>
+                              <height>271</height>
+                             </rect>
+                            </property>
+                            <property name="title">
+                             <string>Retenciones</string>
+                            </property>
+                           </widget>
+                           <widget class="QWidget" name="horizontalLayoutWidget">
                             <property name="geometry">
                              <rect>
                               <x>0</x>
                               <y>0</y>
-                              <width>1291</width>
-                              <height>561</height>
+                              <width>631</width>
+                              <height>51</height>
                              </rect>
                             </property>
-                            <layout class="QGridLayout" name="gridLayout_4">
-                             <item row="0" column="1">
-                              <widget class="QTableView" name="tableView_2"/>
+                            <layout class="QHBoxLayout" name="horizontalLayout_7">
+                             <item>
+                              <widget class="QPushButton" name="btn_add_comprobante_siif">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>150</width>
+                                 <height>30</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Segoe UI</family>
+                                 <pointsize>10</pointsize>
+                                 <weight>50</weight>
+                                 <italic>false</italic>
+                                 <bold>false</bold>
+                                </font>
+                               </property>
+                               <property name="cursor">
+                                <cursorShape>PointingHandCursor</cursorShape>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">background-color: rgb(52, 59, 72);</string>
+                               </property>
+                               <property name="text">
+                                <string>Agregar</string>
+                               </property>
+                               <property name="icon">
+                                <iconset resource="resources.qrc">
+                                 <normaloff>:/icons/images/icons/cil-user-follow.png</normaloff>:/icons/images/icons/cil-user-follow.png</iconset>
+                               </property>
+                              </widget>
                              </item>
-                             <item row="1" column="1">
-                              <widget class="QTableView" name="tableView_3"/>
+                             <item>
+                              <widget class="QPushButton" name="btn_edit_comprobante_siif">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>150</width>
+                                 <height>30</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Segoe UI</family>
+                                 <pointsize>10</pointsize>
+                                 <weight>50</weight>
+                                 <italic>false</italic>
+                                 <bold>false</bold>
+                                </font>
+                               </property>
+                               <property name="cursor">
+                                <cursorShape>PointingHandCursor</cursorShape>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">background-color: rgb(52, 59, 72);</string>
+                               </property>
+                               <property name="text">
+                                <string>Editar</string>
+                               </property>
+                               <property name="icon">
+                                <iconset resource="resources.qrc">
+                                 <normaloff>:/icons/images/icons/cil-pencil.png</normaloff>:/icons/images/icons/cil-pencil.png</iconset>
+                               </property>
+                              </widget>
                              </item>
-                             <item row="0" column="0" rowspan="2">
-                              <widget class="QTableView" name="tableView"/>
+                             <item>
+                              <widget class="QPushButton" name="btn_delete_comprobante_siif">
+                               <property name="minimumSize">
+                                <size>
+                                 <width>150</width>
+                                 <height>30</height>
+                                </size>
+                               </property>
+                               <property name="font">
+                                <font>
+                                 <family>Segoe UI</family>
+                                 <pointsize>10</pointsize>
+                                 <weight>50</weight>
+                                 <italic>false</italic>
+                                 <bold>false</bold>
+                                </font>
+                               </property>
+                               <property name="cursor">
+                                <cursorShape>PointingHandCursor</cursorShape>
+                               </property>
+                               <property name="styleSheet">
+                                <string notr="true">background-color: rgb(52, 59, 72);</string>
+                               </property>
+                               <property name="text">
+                                <string>Eliminar</string>
+                               </property>
+                               <property name="icon">
+                                <iconset resource="resources.qrc">
+                                 <normaloff>:/icons/images/icons/cil-x-circle.png</normaloff>:/icons/images/icons/cil-x-circle.png</iconset>
+                               </property>
+                              </widget>
                              </item>
                             </layout>
                            </widget>
@@ -2946,7 +3089,7 @@ background-repeat: no-repeat;</string>
                  <widget class="QFrame" name="extraRightBox">
                   <property name="minimumSize">
                    <size>
-                    <width>0</width>
+                    <width>320</width>
                     <height>0</height>
                    </size>
                   </property>
@@ -3002,6 +3145,12 @@ background-repeat: no-repeat;</string>
                        <verstretch>0</verstretch>
                       </sizepolicy>
                      </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>0</height>
+                      </size>
+                     </property>
                      <property name="styleSheet">
                       <string notr="true"/>
                      </property>
@@ -3046,7 +3195,7 @@ background-repeat: no-repeat;</string>
 border: none;</string>
                         </property>
                         <property name="currentIndex">
-                         <number>0</number>
+                         <number>1</number>
                         </property>
                         <property name="usesScrollButtons">
                          <bool>true</bool>
