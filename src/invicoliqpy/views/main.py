@@ -24,6 +24,7 @@ from PySide6.QtWidgets import QApplication, QHeaderView, QMainWindow
 
 from invicoliqpy.views.app_functions import AppFunctions
 from invicoliqpy.views.factureros_functions import FacturerosFunctions
+from invicoliqpy.views.siif_functions import SIIFFunctions
 from invicoliqpy.views.app_settings import Settings
 from invicoliqpy.models.database_manager import DatabaseManager
 from invicoliqpy.views.ui_functions import UIFunctions
@@ -94,6 +95,7 @@ class MainWindow(QMainWindow):
         # SETUP PAGES
         # ///////////////////////////////////////////////////////////////
         self.facturerosFunctions()
+        self.siifFunctions()
 
         # SET HOME PAGE AND SELECT MENU
         # ///////////////////////////////////////////////////////////////
@@ -192,6 +194,9 @@ class MainWindow(QMainWindow):
 
     def facturerosFunctions(self):
         self.factureros_functions = FacturerosFunctions(self)
+
+    def siifFunctions(self):
+        self.siif_functions = SIIFFunctions(self)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
